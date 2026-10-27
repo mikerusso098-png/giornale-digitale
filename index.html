@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101827">
-  <meta name="description" content="Punto Attuale: notizie dall'Italia, dal mondo, economia, borsa e sport.">
+
+  <meta name="description" content="Punto Attuale: notizie dall'Italia e dal mondo, economia e borsa, sport, tecnologia, scienza, cultura, ambiente e viaggi.">
+
   <title>Punto Attuale | L'informazione sempre aggiornata</title>
 
   <style>
@@ -28,6 +30,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 20px;
     }
 
     body {
@@ -44,14 +47,14 @@
     }
 
     .container {
-      width: min(1160px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: auto;
     }
 
     .topbar {
       background: #0a111d;
       color: #d7e1ec;
-      font-size: 13px;
+      font-size: 12px;
       padding: 8px 0;
     }
 
@@ -78,11 +81,12 @@
       display: flex;
       align-items: center;
       gap: 13px;
+      min-width: 0;
     }
 
     .brand-icon {
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       flex-shrink: 0;
     }
 
@@ -113,6 +117,8 @@
       text-align: right;
     }
 
+    /* Menu con tutte le categorie visibili */
+
     nav {
       background: var(--navy);
       color: white;
@@ -120,17 +126,21 @@
 
     nav .container {
       display: flex;
-      gap: 4px;
-      overflow-x: auto;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px;
+      padding-top: 4px;
+      padding-bottom: 4px;
     }
 
     nav a {
       display: block;
-      padding: 14px 17px;
-      white-space: nowrap;
-      font-size: 14px;
+      padding: 11px 12px;
+      font-size: 13px;
       font-weight: bold;
-      border-bottom: 3px solid transparent;
+      border-radius: 6px;
+      border-bottom: 2px solid transparent;
+      transition: background .2s ease;
     }
 
     nav a:hover,
@@ -189,7 +199,7 @@
     }
 
     .intro p {
-      max-width: 680px;
+      max-width: 720px;
       color: var(--muted);
       margin: 0;
     }
@@ -227,8 +237,17 @@
       align-items: flex-end;
       color: white;
       background:
-        radial-gradient(circle at 80% 20%, rgba(16,184,173,.65), transparent 25%),
-        linear-gradient(135deg, #101827, #1c3e54 65%, #087f7a);
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(16,184,173,.65),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #101827,
+          #1c3e54 65%,
+          #087f7a
+        );
     }
 
     .hero-art h2 {
@@ -275,7 +294,7 @@
     }
 
     .category {
-      margin-top: 32px;
+      margin-top: 34px;
       scroll-margin-top: 20px;
     }
 
@@ -292,14 +311,15 @@
     .section-heading h2 {
       margin: 0;
       font-size: 25px;
-      letter-spacing: -0.5px;
+      letter-spacing: -.5px;
     }
 
     .section-heading span {
       color: var(--teal-dark);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
       text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
     .cards {
@@ -310,6 +330,12 @@
 
     .category-card {
       padding: 21px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(16, 24, 39, .09);
     }
 
     .card-icon {
@@ -337,7 +363,7 @@
     }
 
     .editorial {
-      margin-top: 32px;
+      margin-top: 34px;
       padding: 26px;
       border-radius: var(--radius);
       background: var(--navy);
@@ -381,26 +407,81 @@
       margin: 5px 0;
     }
 
-    @media (max-width: 760px) {
-      .brand-note {
-        display: none;
+    @media (max-width: 900px) {
+      nav .container {
+        justify-content: flex-start;
+      }
+
+      nav a {
+        padding: 10px;
+        font-size: 12px;
       }
 
       .hero-grid {
         grid-template-columns: 1fr;
       }
 
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .brand-row {
+        padding: 17px 0;
+      }
+
+      .brand-icon {
+        width: 45px;
+        height: 45px;
+      }
+
+      .brand-name {
+        font-size: 24px;
+      }
+
+      .tagline {
+        font-size: 12px;
+      }
+
+      .brand-note {
+        display: none;
+      }
+
+      nav .container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      nav a {
+        white-space: nowrap;
+        font-size: 12px;
+      }
+
+      .topbar .container {
+        flex-direction: column;
+        gap: 3px;
+      }
+
       .hero-art {
         min-height: 260px;
+        padding: 22px;
       }
 
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .topbar .container {
-        flex-direction: column;
-        gap: 3px;
+      .section-heading h2 {
+        font-size: 22px;
+      }
+
+      .section-heading span {
+        font-size: 10px;
       }
     }
 
@@ -408,11 +489,17 @@
       html {
         scroll-behavior: auto;
       }
+
+      .category-card {
+        transition: none;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Barra superiore -->
   <div class="topbar">
     <div class="container">
       <span>Una lettura chiara dei fatti</span>
@@ -420,14 +507,29 @@
     </div>
   </div>
 
+  <!-- Marchio -->
   <header>
     <div class="container brand-row">
       <a class="brand" href="#home" aria-label="Punto Attuale - Homepage">
-        <svg class="brand-icon" viewBox="0 0 64 64" aria-hidden="true">
-          <path d="M32 59C26 49 9 33 9 22a23 23 0 0 1 46 0C55 33 38 49 32 59Z" fill="#101827"/>
+
+        <svg
+          class="brand-icon"
+          viewBox="0 0 64 64"
+          aria-hidden="true"
+        >
+          <path
+            d="M32 59C26 49 9 33 9 22a23 23 0 0 1 46 0C55 33 38 49 32 59Z"
+            fill="#101827"
+          />
           <circle cx="32" cy="22" r="13" fill="#10b8ad"/>
           <circle cx="32" cy="22" r="5" fill="#101827"/>
-          <path d="M44 10a17 17 0 0 1 6 12M49 5a24 24 0 0 1 9 17" fill="none" stroke="#10b8ad" stroke-width="3.5" stroke-linecap="round"/>
+          <path
+            d="M44 10a17 17 0 0 1 6 12M49 5a24 24 0 0 1 9 17"
+            fill="none"
+            stroke="#10b8ad"
+            stroke-width="3.5"
+            stroke-linecap="round"
+          />
         </svg>
 
         <div>
@@ -443,6 +545,7 @@
     </div>
   </header>
 
+  <!-- Menu con tutte le categorie -->
   <nav aria-label="Navigazione principale">
     <div class="container">
       <a href="#home">Home</a>
@@ -450,9 +553,15 @@
       <a href="#mondo">Mondo</a>
       <a href="#economia">Economia e Borsa</a>
       <a href="#sport">Sport</a>
+      <a href="#tecnologia">Tecnologia</a>
+      <a href="#scienza">Salute e Scienza</a>
+      <a href="#cultura">Spettacolo e Cultura</a>
+      <a href="#ambiente">Ambiente e Meteo</a>
+      <a href="#viaggi">Viaggi e Territorio</a>
     </div>
   </nav>
 
+  <!-- Fascia in evidenza -->
   <div class="ticker">
     <div class="container">
       <span class="ticker-label">IN EVIDENZA</span>
@@ -461,12 +570,18 @@
   </div>
 
   <main class="container" id="home">
+
+    <!-- Introduzione -->
     <section class="intro">
-      <div class="eyebrow">Informazione · Approfondimento · Attualità</div>
+      <div class="eyebrow">
+        Informazione · Approfondimento · Attualità
+      </div>
+
       <h1>Capire i fatti. Restare aggiornati.</h1>
+
       <p>
         Uno spazio digitale dedicato alle notizie dall'Italia e dal mondo,
-        all'economia e allo sport.
+        all'economia, allo sport, alla tecnologia, alla scienza e alla cultura.
       </p>
     </section>
 
@@ -476,12 +591,16 @@
       Saranno sostituiti con articoli verificati prima del lancio editoriale.
     </div>
 
+    <!-- Contenuto principale -->
     <section class="hero-grid" aria-label="Contenuti in evidenza">
+
       <article class="hero-card">
         <div class="hero-art">
           <div>
             <span class="category-label">Il progetto</span>
+
             <h2>Un nuovo punto di vista sull'attualità</h2>
+
             <p>
               Notizie, contesto e fonti: l'obiettivo di Punto Attuale
               è aiutarti a orientarti tra i fatti.
@@ -497,24 +616,26 @@
           <article class="side-item">
             <span class="eyebrow">Italia</span>
             <h3>Le notizie del Paese, oltre i titoli</h3>
-            <p>Contenuto dimostrativo: sarà sostituito con articoli verificati.</p>
+            <p>Contenuto dimostrativo, in attesa degli articoli verificati.</p>
           </article>
 
           <article class="side-item">
             <span class="eyebrow">Economia</span>
             <h3>Mercati e numeri spiegati in modo semplice</h3>
-            <p>Contenuto dimostrativo: dati e fonti saranno indicati negli articoli.</p>
+            <p>Contenuto dimostrativo, in attesa di dati e fonti.</p>
           </article>
 
           <article class="side-item">
-            <span class="eyebrow">Sport</span>
-            <h3>Risultati, protagonisti e storie sportive</h3>
-            <p>Contenuto dimostrativo: gli aggiornamenti saranno verificati.</p>
+            <span class="eyebrow">Tecnologia</span>
+            <h3>Innovazione e intelligenza artificiale</h3>
+            <p>Contenuto dimostrativo, in attesa degli aggiornamenti.</p>
           </article>
         </div>
       </aside>
+
     </section>
 
+    <!-- ITALIA -->
     <section class="category" id="italia">
       <div class="section-heading">
         <h2>Italia</h2>
@@ -536,12 +657,13 @@
 
         <article class="category-card">
           <div class="card-icon">+</div>
-          <h3>Attualità</h3>
-          <p>I temi che incidono sulla vita quotidiana e meritano spiegazioni chiare.</p>
+          <h3>Attualità italiana</h3>
+          <p>Temi che incidono sulla vita quotidiana dei cittadini.</p>
         </article>
       </div>
     </section>
 
+    <!-- MONDO -->
     <section class="category" id="mondo">
       <div class="section-heading">
         <h2>Mondo</h2>
@@ -552,7 +674,7 @@
         <article class="category-card">
           <div class="card-icon">◎</div>
           <h3>Europa</h3>
-          <p>Politica, istituzioni e avvenimenti europei raccontati con fonti riconoscibili.</p>
+          <p>Politica, istituzioni e avvenimenti europei.</p>
         </article>
 
         <article class="category-card">
@@ -562,13 +684,14 @@
         </article>
 
         <article class="category-card">
-          <div class="card-icon">✦</div>
-          <h3>Scienza e società</h3>
-          <p>Scoperte e cambiamenti spiegati con attenzione alle prove e alle fonti.</p>
+          <div class="card-icon">◈</div>
+          <h3>Geopolitica</h3>
+          <p>Relazioni internazionali, diplomazia e scenari globali.</p>
         </article>
       </div>
     </section>
 
+    <!-- ECONOMIA E BORSA -->
     <section class="category" id="economia">
       <div class="section-heading">
         <h2>Economia e Borsa</h2>
@@ -579,23 +702,24 @@
         <article class="category-card">
           <div class="card-icon">€</div>
           <h3>Economia</h3>
-          <p>Prezzi, lavoro e imprese spiegati con dati e riferimenti verificabili.</p>
+          <p>Prezzi, lavoro, imprese e andamento dell'economia.</p>
         </article>
 
         <article class="category-card">
           <div class="card-icon">↗</div>
           <h3>Mercati finanziari</h3>
-          <p>Quotazioni e andamento dei mercati con data e ora dei dati, quando disponibili.</p>
+          <p>Quotazioni e mercati, con data e ora dei dati quando disponibili.</p>
         </article>
 
         <article class="category-card">
           <div class="card-icon">i</div>
-          <h3>Guide e spiegazioni</h3>
-          <p>Concetti economici raccontati in modo comprensibile, senza promesse di rendimento.</p>
+          <h3>Risparmio e finanza</h3>
+          <p>Guide per comprendere concetti economici e finanziari.</p>
         </article>
       </div>
     </section>
 
+    <!-- SPORT -->
     <section class="category" id="sport">
       <div class="section-heading">
         <h2>Sport</h2>
@@ -606,33 +730,178 @@
         <article class="category-card">
           <div class="card-icon">⚽</div>
           <h3>Calcio</h3>
-          <p>Partite, risultati e protagonisti: gli aggiornamenti saranno controllati.</p>
+          <p>Campionati, risultati, squadre e protagonisti.</p>
         </article>
 
         <article class="category-card">
           <div class="card-icon">🏁</div>
           <h3>Motori</h3>
-          <p>Gare, classifiche e notizie dal mondo dei motori.</p>
+          <p>Formula 1, MotoGP, gare e classifiche.</p>
         </article>
 
         <article class="category-card">
           <div class="card-icon">★</div>
           <h3>Altri sport</h3>
-          <p>Risultati e storie sportive oltre i campionati più seguiti.</p>
+          <p>Tennis, basket, pallavolo e altre discipline.</p>
         </article>
       </div>
     </section>
 
+    <!-- TECNOLOGIA -->
+    <section class="category" id="tecnologia">
+      <div class="section-heading">
+        <h2>Tecnologia</h2>
+        <span>Innovazione digitale</span>
+      </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">AI</div>
+          <h3>Intelligenza artificiale</h3>
+          <p>Nuovi strumenti, applicazioni e sviluppi dell'AI.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">⌘</div>
+          <h3>Digitale e dispositivi</h3>
+          <p>Smartphone, computer, app e prodotti tecnologici.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">◇</div>
+          <h3>Cybersecurity</h3>
+          <p>Privacy, sicurezza informatica e protezione dei dati.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SALUTE E SCIENZA -->
+    <section class="category" id="scienza">
+      <div class="section-heading">
+        <h2>Salute e Scienza</h2>
+        <span>Ricerca e conoscenza</span>
+      </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">+</div>
+          <h3>Salute pubblica</h3>
+          <p>Informazioni sanitarie basate su fonti autorevoli e verificabili.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">⚗</div>
+          <h3>Ricerca scientifica</h3>
+          <p>Scoperte, studi e nuove conoscenze scientifiche.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">✦</div>
+          <h3>Spazio e universo</h3>
+          <p>Astronomia, missioni spaziali e ricerca sull'universo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SPETTACOLO E CULTURA -->
+    <section class="category" id="cultura">
+      <div class="section-heading">
+        <h2>Spettacolo e Cultura</h2>
+        <span>Arte e intrattenimento</span>
+      </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">▶</div>
+          <h3>Cinema e serie TV</h3>
+          <p>Uscite, recensioni, festival e notizie dal cinema.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">♫</div>
+          <h3>Musica e spettacolo</h3>
+          <p>Concerti, artisti, televisione ed eventi.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">▤</div>
+          <h3>Libri e cultura</h3>
+          <p>Letteratura, arte, musei, mostre e patrimonio culturale.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- AMBIENTE E METEO -->
+    <section class="category" id="ambiente">
+      <div class="section-heading">
+        <h2>Ambiente e Meteo</h2>
+        <span>Clima e territorio</span>
+      </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">☼</div>
+          <h3>Meteo</h3>
+          <p>Previsioni e allerte da fonti meteorologiche affidabili.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">♧</div>
+          <h3>Ambiente e clima</h3>
+          <p>Cambiamenti climatici, biodiversità e tutela ambientale.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">⚡</div>
+          <h3>Energia</h3>
+          <p>Fonti energetiche, innovazione e sostenibilità.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- VIAGGI E TERRITORIO -->
+    <section class="category" id="viaggi">
+      <div class="section-heading">
+        <h2>Viaggi e Territorio</h2>
+        <span>Luoghi da scoprire</span>
+      </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">⌖</div>
+          <h3>Turismo</h3>
+          <p>Destinazioni, itinerari e consigli per viaggiare.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">⌂</div>
+          <h3>Notizie locali</h3>
+          <p>Comuni, regioni, servizi e iniziative del territorio.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">↔</div>
+          <h3>Trasporti e mobilità</h3>
+          <p>Treni, strade, aeroporti e novità sulla mobilità.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- METODO EDITORIALE -->
     <section class="editorial" id="fonti">
       <h2>Le fonti prima di tutto</h2>
       <p>
         Punto Attuale punta a distinguere fatti verificati, analisi e contenuti
         preparati con il supporto dell'intelligenza artificiale. Ogni articolo
         pubblicato dovrà essere controllato e accompagnato dalle sue fonti.
+        Questa pagina è una struttura iniziale: non contiene ancora un sistema
+        automatico di raccolta o pubblicazione delle notizie.
       </p>
     </section>
+
   </main>
 
+  <!-- Piè di pagina -->
   <footer>
     <div class="container footer-row">
       <div>
@@ -642,9 +911,12 @@
 
       <div>
         <p>Italia · Mondo · Economia e Borsa · Sport</p>
+        <p>Tecnologia · Salute e Scienza · Spettacolo e Cultura</p>
+        <p>Ambiente e Meteo · Viaggi e Territorio</p>
         <p>Progetto in fase di sviluppo. I contenuti dimostrativi non sono notizie reali.</p>
       </div>
     </div>
   </footer>
+
 </body>
 </html>
