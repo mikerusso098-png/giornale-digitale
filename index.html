@@ -918,5 +918,275 @@
     </div>
   </footer>
 
+<style>
+  .live-news-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e3e8ee;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(16, 24, 39, .05);
+    min-width: 0;
+  }
+
+  .live-news-card h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .live-news-card p {
+    margin: 0;
+    color: #657184;
+    font-size: 13px;
+  }
+
+  .live-news-card a {
+    color: #087f7a;
+    font-weight: bold;
+    margin-top: auto;
+  }
+
+  .live-news-meta {
+    color: #657184;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+  }
+
+  #rss-live-status {
+    padding: 12px 15px;
+    margin-bottom: 22px;
+    border-radius: 10px;
+    background: #e2f8f5;
+    color: #075e58;
+    font-size: 13px;
+  }
+
+  .live-news-empty {
+    grid-column: 1 / -1;
+    padding: 18px;
+    background: white;
+    border-radius: 12px;
+  }
+</style>
+
+<script>
+(async function connectPuntoAttuale() {
+  const API =
+    "https://punto-attuale-rss.mikerusso098.workers.dev/api/news";
+
+  const categoryIds = [
+    "italia",
+    "mondo",
+    "economia",
+    "sport",
+    "tecnologia",
+    "scienza",
+    "cultura",
+    "ambiente",
+    "viaggi"
+  ];
+
+  const names = {
+    italia: "Italia",
+    mondo: "Mondo",
+    economia: "Economia e Borsa",
+    sport: "Sport",
+    tecnologia: "Tecnologia",
+    scienza: "Salute e Scienza",
+    cultura: "Spettacolo e Cultura",
+    ambiente: "Ambiente e Meteo",
+    viaggi: "Viaggi e Territorio"
+  };
+
+  const status = document.querySelector(".demo-notice");
+
+  if (status) {
+    status.id = "rss-live-status";
+    status.textContent = "Collegamento alle notizie in corso…";
+  }
+
+  function formatDate(value) {
+    if (!value) return "Data non disponibile";
+
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+      return "Data non disponibile";
+    }
+
+    return new Intl.DateTimeFormat("it-IT", {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }).format(date);
+  }
+
+  function makeCard(article) {
+    const card = document.createElement("article");
+    card.className = "live-news-card";
+
+    const meta = document.createElement("div");
+    meta.className = "live-news-meta";
+    meta.textContent =
+      (article.source || "Fonte") + " · " +
+      formatDate(article.publishedAt);
+
+    const title = document.createElement("h3");
+    title.textContent = article.title || "Notizia";
+
+    const description = document.createElement("p");
+    description.textContent =
+      article.description || "Leggi la notizia originale alla fonte.";
+
+    const link = document.createElement("a");
+    link.href = article.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Leggi la fonte ↗";
+
+    card.append(meta, title, description, link);
+    return card;
+  }
+
+  function showMessage(container, message) {
+    container.replaceChildren();
+
+    const item = document.createElement("div");
+    item.className = "live-news-empty";
+    item.textContent = message;
+
+    container.appendChild(item);
+  }
+
+  try {
+    const response = await fetch(API, {
+      method: "GET",
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("API non disponibile (HTTP " + response.status + ")");
+    }
+
+    const data = await response.json();
+
+    if (!data.ok || !data.categories) {
+      throw new Error("Formato dei dati non riconosciuto");
+    }
+
+    let total = 0;
+
+    for (const id of categoryIds) {
+      const section = document.getElementById(id);
+      const category = data.categories[id];
+
+      if (!section) continue;
+
+      const container = section.querySelector(".cards");
+      if (!container) continue;
+
+      const articles = category && Array.isArray(category.articles)
+        ? category.articles
+        : [];
+
+      container.replaceChildren();
+
+      if (articles.length === 0) {
+        showMessage(
+          container,
+          "Nessun articolo disponibile al momento per questa categoria."
+        );
+        continue;
+      }
+
+      articles.forEach(article => {
+        container.appendChild(makeCard(article));
+      });
+
+      total += articles.length;
+
+      const heading = section.querySelector(".section-heading span");
+
+      if (heading) {
+        heading.textContent = articles.length + " notizie disponibili";
+      }
+    }
+
+    // Aggiorna anche il riquadro "Da seguire".
+    const side = document.querySelector(".side-content");
+
+    if (side) {
+      const latest = categoryIds
+        .flatMap(id => {
+          const category = data.categories[id];
+          return category && Array.isArray(category.articles)
+            ? category.articles
+            : [];
+        })
+        .sort((a, b) =>
+          new Date(b.publishedAt) - new Date(a.publishedAt)
+        )
+        .slice(0, 3);
+
+      side.replaceChildren();
+
+      const heading = document.createElement("h2");
+      heading.textContent = "Ultime notizie";
+      side.appendChild(heading);
+
+      latest.forEach(article => {
+        const item = document.createElement("article");
+        item.className = "side-item";
+
+        const label = document.createElement("span");
+        label.className = "eyebrow";
+        label.textContent = names[article.category] || "Attualità";
+
+        const title = document.createElement("h3");
+        title.textContent = article.title;
+
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Leggi la fonte ↗";
+
+        item.append(label, title, link);
+        side.appendChild(item);
+      });
+    }
+
+    if (status) {
+      status.textContent =
+        "Notizie collegate correttamente: " + total +
+        " articoli caricati. Le notizie provengono da feed esterni; " +
+        "consulta le fonti originali per i dettagli.";
+    }
+
+    // Rimuove la vecchia dicitura dimostrativa nel piè di pagina.
+    document.querySelectorAll("footer p").forEach(paragraph => {
+      if (paragraph.textContent.includes("Progetto in fase di sviluppo")) {
+        paragraph.textContent =
+          "Notizie da fonti esterne. Consulta sempre la fonte originale.";
+      }
+    });
+
+  } catch (error) {
+    console.error("Errore nel collegamento RSS:", error);
+
+    if (status) {
+      status.textContent =
+        "Impossibile caricare le notizie. Riprova più tardi. " +
+        "Dettaglio: " + error.message;
+      status.style.background = "#fff4d4";
+      status.style.color = "#715a20";
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
