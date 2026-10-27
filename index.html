@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -21,9 +22,7 @@
       --radius: 16px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -38,9 +37,7 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
     .container {
       width: min(1180px, calc(100% - 32px));
@@ -95,9 +92,7 @@
       line-height: 1.1;
     }
 
-    .brand-name span {
-      color: var(--teal-dark);
-    }
+    .brand-name span { color: var(--teal-dark); }
 
     .tagline {
       margin: 5px 0 0;
@@ -169,13 +164,9 @@
       text-transform: uppercase;
     }
 
-    main {
-      padding: 32px 0 50px;
-    }
+    main { padding: 32px 0 50px; }
 
-    .intro {
-      margin-bottom: 22px;
-    }
+    .intro { margin-bottom: 22px; }
 
     .eyebrow {
       color: var(--teal-dark);
@@ -200,7 +191,7 @@
 
     .live-status {
       padding: 12px 15px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       background: #e2f8f5;
       border: 1px solid #b9e9e4;
       border-radius: 10px;
@@ -212,6 +203,49 @@
       background: #fff4d4;
       border-color: #f2dfa1;
       color: #715a20;
+    }
+
+    .news-search {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 22px;
+      padding: 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(16, 24, 39, 0.04);
+    }
+
+    .news-search label {
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .news-search input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid #cbd5df;
+      border-radius: 9px;
+      background: #fbfcfe;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .news-search input:focus {
+      outline: 3px solid rgba(16, 184, 173, 0.22);
+      border-color: var(--teal-dark);
+    }
+
+    .search-count {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
     }
 
     .hero-grid {
@@ -254,9 +288,7 @@
       color: #e5f1f4;
     }
 
-    .side-content {
-      padding: 22px;
-    }
+    .side-content { padding: 22px; }
 
     .side-content h2 {
       margin: 0 0 14px;
@@ -268,9 +300,7 @@
       border-top: 1px solid var(--line);
     }
 
-    .side-item:first-of-type {
-      border-top: 0;
-    }
+    .side-item:first-of-type { border-top: 0; }
 
     .side-item h3 {
       margin: 6px 0;
@@ -286,9 +316,7 @@
     }
 
     .side-item a:hover,
-    .source-link:hover {
-      text-decoration: underline;
-    }
+    .source-link:hover { text-decoration: underline; }
 
     .side-item p {
       margin: 0 0 8px;
@@ -337,6 +365,17 @@
       gap: 10px;
       min-width: 0;
       padding: 20px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(16, 24, 39, 0.10);
+    }
+
+    .news-card[hidden],
+    .category[hidden] {
+      display: none !important;
     }
 
     .news-meta {
@@ -419,49 +458,33 @@
     }
 
     @media (max-width: 900px) {
-      nav .container {
-        justify-content: flex-start;
-      }
+      nav .container { justify-content: flex-start; }
 
       nav a {
         padding: 10px;
         font-size: 12px;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
+      .hero-grid { grid-template-columns: 1fr; }
 
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 560px) {
-      .container {
-        width: min(100% - 24px, 1180px);
-      }
+      .container { width: min(100% - 24px, 1180px); }
 
-      .brand-row {
-        padding: 17px 0;
-      }
+      .brand-row { padding: 17px 0; }
 
       .brand-icon {
         width: 45px;
         height: 45px;
       }
 
-      .brand-name {
-        font-size: 24px;
-      }
+      .brand-name { font-size: 24px; }
 
-      .tagline {
-        font-size: 12px;
-      }
+      .tagline { font-size: 12px; }
 
-      .brand-note {
-        display: none;
-      }
+      .brand-note { display: none; }
 
       nav .container {
         flex-wrap: nowrap;
@@ -483,24 +506,27 @@
         padding: 22px;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+      .cards { grid-template-columns: 1fr; }
 
-      .section-heading h2 {
-        font-size: 22px;
-      }
+      .section-heading h2 { font-size: 22px; }
 
       .section-heading span {
         font-size: 10px;
         text-align: right;
       }
+
+      .news-search {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .search-count { white-space: normal; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
+
+      .news-card { transition: none; }
     }
   </style>
 </head>
@@ -567,6 +593,20 @@
     <div id="rss-live-status" class="live-status" role="status" aria-live="polite">
       Collegamento alle notizie in corso…
     </div>
+
+    <form class="news-search" id="news-search-form" role="search" onsubmit="return false">
+      <label for="news-search-input">Cerca notizie</label>
+      <input
+        id="news-search-input"
+        type="search"
+        placeholder="Scrivi una parola, un argomento o una fonte…"
+        autocomplete="off"
+        aria-describedby="search-count"
+      >
+      <span class="search-count" id="search-count" aria-live="polite">
+        Caricamento notizie…
+      </span>
+    </form>
 
     <section class="hero-grid" aria-label="Contenuti in evidenza">
       <article class="hero-card">
@@ -691,6 +731,8 @@
 
       const statusEl = document.getElementById("rss-live-status");
       const sideEl = document.getElementById("side-content");
+      const searchInput = document.getElementById("news-search-input");
+      const searchCount = document.getElementById("search-count");
 
       function formatDate(value) {
         if (!value) return "Data non disponibile";
@@ -823,6 +865,54 @@
         });
       }
 
+      function filterNews() {
+        const query = (searchInput.value || "")
+          .trim()
+          .toLocaleLowerCase("it");
+
+        let visible = 0;
+        let total = 0;
+
+        CATEGORY_IDS.forEach(id => {
+          const section = document.getElementById(id);
+          const cards = section
+            ? [...section.querySelectorAll(".news-card")]
+            : [];
+
+          total += cards.length;
+          let visibleInSection = 0;
+
+          cards.forEach(card => {
+            const matches =
+              !query ||
+              card.textContent.toLocaleLowerCase("it").includes(query);
+
+            card.hidden = !matches;
+
+            if (matches) {
+              visible++;
+              visibleInSection++;
+            }
+          });
+
+          if (section) {
+            section.hidden = Boolean(query) && visibleInSection === 0;
+          }
+        });
+
+        if (searchCount) {
+          if (!query) {
+            searchCount.textContent = `${total} notizie disponibili`;
+          } else if (visible === 0) {
+            searchCount.textContent = "Nessuna notizia trovata";
+          } else {
+            searchCount.textContent = `${visible} di ${total} notizie`;
+          }
+        }
+      }
+
+      searchInput.addEventListener("input", filterNews);
+
       async function loadNews() {
         try {
           const response = await fetch(API_URL, {
@@ -898,6 +988,8 @@
             `Notizie collegate correttamente: ${total} articoli caricati. ` +
             "Le notizie provengono da feed esterni; consulta le fonti originali per i dettagli.";
 
+          filterNews();
+
         } catch (error) {
           console.error("Errore nel collegamento RSS:", error);
 
@@ -906,6 +998,11 @@
             "Impossibile caricare le notizie in questo momento. " +
             error.message +
             ". Riprova tra poco.";
+
+          if (searchCount) {
+            searchCount.textContent =
+              "Ricerca non disponibile finché le notizie non vengono caricate";
+          }
 
           CATEGORY_IDS.forEach(id => {
             const section = document.getElementById(id);
