@@ -19,7 +19,7 @@
       --line: #e3e8ee;
       --paper: #f4f7fa;
       --white: #ffffff;
-      --radius: 16px;
+      --radius: 15px;
     }
 
     * { box-sizing: border-box; }
@@ -67,7 +67,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 22px 0;
+      padding: 20px 0;
     }
 
     .brand {
@@ -78,8 +78,8 @@
     }
 
     .brand-icon {
-      width: 56px;
-      height: 56px;
+      width: 54px;
+      height: 54px;
       flex-shrink: 0;
     }
 
@@ -124,7 +124,7 @@
 
     nav a {
       display: block;
-      padding: 11px 12px;
+      padding: 10px 11px;
       font-size: 13px;
       font-weight: bold;
       text-decoration: none;
@@ -138,59 +138,10 @@
       border-bottom-color: var(--teal);
     }
 
-    .ticker {
-      background: #e2f8f5;
-      border-bottom: 1px solid #b9e9e4;
-      padding: 11px 0;
-      font-size: 14px;
-    }
-
-    .ticker .container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .ticker-label,
-    .category-label {
-      display: inline-block;
-      background: var(--teal);
-      color: #062a2a;
-      border-radius: 5px;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    main { padding: 32px 0 50px; }
-
-    .intro { margin-bottom: 22px; }
-
-    .eyebrow {
-      color: var(--teal-dark);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 8px 0 12px;
-      font-size: clamp(30px, 5vw, 46px);
-      letter-spacing: -1.5px;
-      line-height: 1.15;
-    }
-
-    .intro p {
-      max-width: 720px;
-      color: var(--muted);
-      margin: 0;
-    }
+    main { padding: 24px 0 48px; }
 
     .live-status {
-      padding: 12px 15px;
+      padding: 11px 15px;
       margin-bottom: 18px;
       background: #e2f8f5;
       border: 1px solid #b9e9e4;
@@ -207,29 +158,29 @@
 
     .news-search {
       display: flex;
-      gap: 10px;
       align-items: center;
-      margin: 0 0 22px;
-      padding: 14px;
-      background: var(--white);
+      gap: 12px;
+      margin: 0 0 28px;
+      padding: 13px;
+      background: white;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(16, 24, 39, 0.04);
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(16, 24, 39, .04);
     }
 
     .news-search label {
       flex-shrink: 0;
+      color: var(--navy);
       font-size: 13px;
       font-weight: 800;
-      color: var(--navy);
     }
 
     .news-search input {
       width: 100%;
       min-width: 0;
-      padding: 12px 14px;
+      padding: 11px 14px;
       border: 1px solid #cbd5df;
-      border-radius: 9px;
+      border-radius: 8px;
       background: #fbfcfe;
       color: var(--ink);
       font: inherit;
@@ -237,7 +188,7 @@
     }
 
     .news-search input:focus {
-      outline: 3px solid rgba(16, 184, 173, 0.22);
+      outline: 3px solid rgba(16, 184, 173, .2);
       border-color: var(--teal-dark);
     }
 
@@ -248,109 +199,101 @@
       white-space: nowrap;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 18px;
-    }
-
-    .hero-card,
-    .side-card,
-    .news-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(16, 24, 39, 0.05);
-    }
-
-    .hero-art {
-      min-height: 310px;
-      padding: 28px;
-      display: flex;
-      align-items: flex-end;
-      color: white;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(16,184,173,.65), transparent 25%),
-        linear-gradient(135deg, #101827, #1c3e54 65%, #087f7a);
-    }
-
-    .hero-art h2 {
-      margin: 13px 0 9px;
-      max-width: 650px;
-      font-size: clamp(25px, 4vw, 38px);
-      line-height: 1.15;
-      letter-spacing: -1px;
-    }
-
-    .hero-art p {
-      margin: 0;
-      color: #e5f1f4;
-    }
-
-    .side-content { padding: 22px; }
-
-    .side-content h2 {
-      margin: 0 0 14px;
-      font-size: 20px;
-    }
-
-    .side-item {
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .side-item:first-of-type { border-top: 0; }
-
-    .side-item h3 {
-      margin: 6px 0;
-      font-size: 16px;
-      line-height: 1.4;
-    }
-
-    .side-item a,
-    .source-link {
-      color: var(--teal-dark);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .side-item a:hover,
-    .source-link:hover { text-decoration: underline; }
-
-    .side-item p {
-      margin: 0 0 8px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .category {
-      margin-top: 34px;
-      scroll-margin-top: 20px;
-    }
-
     .section-heading {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
-      border-bottom: 2px solid var(--navy);
+      margin-bottom: 15px;
       padding-bottom: 10px;
+      border-bottom: 2px solid var(--navy);
     }
 
     .section-heading h2 {
       margin: 0;
       font-size: 25px;
       letter-spacing: -.5px;
+      line-height: 1.3;
     }
 
     .section-heading span {
       color: var(--teal-dark);
       font-size: 11px;
       font-weight: bold;
-      text-transform: uppercase;
       letter-spacing: .5px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .latest-news {
+      margin-bottom: 34px;
+    }
+
+    .latest-news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .latest-item,
+    .news-card {
+      min-width: 0;
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 7px 22px rgba(16, 24, 39, .045);
+      overflow-wrap: anywhere;
+    }
+
+    .latest-item {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .latest-item:hover,
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 11px 25px rgba(16, 24, 39, .09);
+    }
+
+    .news-meta {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+    }
+
+    .latest-item h3,
+    .news-card h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .latest-item p,
+    .news-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .source-link {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 4px;
+      color: var(--teal-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .source-link:hover { text-decoration: underline; }
+
+    .category {
+      margin-top: 34px;
+      scroll-margin-top: 20px;
     }
 
     .cards {
@@ -363,14 +306,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      min-width: 0;
-      padding: 20px;
       transition: transform .18s ease, box-shadow .18s ease;
-    }
-
-    .news-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(16, 24, 39, 0.10);
     }
 
     .news-card[hidden],
@@ -378,43 +314,18 @@
       display: none !important;
     }
 
-    .news-meta {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .4px;
-    }
-
-    .news-card h3 {
-      margin: 0;
-      font-size: 17px;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
-    .news-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .news-card .source-link {
-      margin-top: auto;
-      padding-top: 4px;
-    }
-
     .empty-message {
       grid-column: 1 / -1;
       padding: 18px;
       background: white;
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 10px;
       color: var(--muted);
     }
 
     .editorial {
-      margin-top: 34px;
-      padding: 26px;
+      margin-top: 38px;
+      padding: 25px;
       border-radius: var(--radius);
       background: var(--navy);
       color: white;
@@ -422,7 +333,7 @@
 
     .editorial h2 {
       margin: 0 0 8px;
-      font-size: 23px;
+      font-size: 22px;
     }
 
     .editorial p {
@@ -433,9 +344,9 @@
     }
 
     footer {
+      padding: 27px 0;
       background: #0a111d;
       color: #d7e1ec;
-      padding: 28px 0;
       font-size: 13px;
     }
 
@@ -447,44 +358,66 @@
     }
 
     .footer-brand {
+      color: white;
       font-size: 18px;
       font-weight: 900;
-      color: white;
     }
 
     footer p {
-      color: #aab8c8;
       margin: 5px 0;
+      color: #aab8c8;
     }
+
+    #back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+      padding: 12px 17px;
+      border: 0;
+      border-radius: 30px;
+      background: var(--navy);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #back-to-top:hover { background: var(--teal-dark); }
 
     @media (max-width: 900px) {
       nav .container { justify-content: flex-start; }
-
-      nav a {
-        padding: 10px;
-        font-size: 12px;
+      nav a { padding: 10px; font-size: 12px; }
+      .cards,
+      .latest-news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .hero-grid { grid-template-columns: 1fr; }
-
-      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 560px) {
       .container { width: min(100% - 24px, 1180px); }
 
-      .brand-row { padding: 17px 0; }
-
-      .brand-icon {
-        width: 45px;
-        height: 45px;
-      }
-
+      .brand-row { padding: 16px 0; }
+      .brand-icon { width: 44px; height: 44px; }
       .brand-name { font-size: 24px; }
-
       .tagline { font-size: 12px; }
-
       .brand-note { display: none; }
+
+      .topbar .container {
+        flex-direction: column;
+        gap: 3px;
+      }
 
       nav .container {
         flex-wrap: nowrap;
@@ -492,27 +425,8 @@
       }
 
       nav a {
+        flex-shrink: 0;
         white-space: nowrap;
-        font-size: 12px;
-      }
-
-      .topbar .container {
-        flex-direction: column;
-        gap: 3px;
-      }
-
-      .hero-art {
-        min-height: 260px;
-        padding: 22px;
-      }
-
-      .cards { grid-template-columns: 1fr; }
-
-      .section-heading h2 { font-size: 22px; }
-
-      .section-heading span {
-        font-size: 10px;
-        text-align: right;
       }
 
       .news-search {
@@ -521,12 +435,24 @@
       }
 
       .search-count { white-space: normal; }
+
+      .cards,
+      .latest-news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 { font-size: 22px; }
+
+      #back-to-top {
+        right: 14px;
+        bottom: 14px;
+        padding: 11px 15px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-
-      .news-card { transition: none; }
+      .latest-item, .news-card, #back-to-top { transition: none; }
     }
   </style>
 </head>
@@ -572,24 +498,7 @@
     </div>
   </nav>
 
-  <div class="ticker">
-    <div class="container">
-      <span class="ticker-label">IN EVIDENZA</span>
-      <span>Le notizie, spiegate con chiarezza.</span>
-    </div>
-  </div>
-
   <main class="container" id="home">
-    <section class="intro">
-      <div class="eyebrow">Informazione · Approfondimento · Attualità</div>
-      <h1>Capire i fatti. Restare aggiornati.</h1>
-      <p>
-        Uno spazio digitale dedicato alle notizie dall'Italia e dal mondo,
-        all'economia, allo sport, alla tecnologia, alla scienza e alla cultura.
-        Consulta sempre le fonti originali per leggere tutti i dettagli.
-      </p>
-    </section>
-
     <div id="rss-live-status" class="live-status" role="status" aria-live="polite">
       Collegamento alle notizie in corso…
     </div>
@@ -599,7 +508,7 @@
       <input
         id="news-search-input"
         type="search"
-        placeholder="Scrivi una parola, un argomento o una fonte…"
+        placeholder="Cerca per titolo, argomento o fonte…"
         autocomplete="off"
         aria-describedby="search-count"
       >
@@ -608,77 +517,68 @@
       </span>
     </form>
 
-    <section class="hero-grid" aria-label="Contenuti in evidenza">
-      <article class="hero-card">
-        <div class="hero-art">
-          <div>
-            <span class="category-label">Punto Attuale</span>
-            <h2>Le notizie, con le fonti in primo piano.</h2>
-            <p>Una panoramica dell'attualità organizzata in nove categorie.</p>
-          </div>
-        </div>
-      </article>
-
-      <aside class="side-card">
-        <div class="side-content" id="side-content">
-          <h2>Ultime notizie</h2>
-          <p>Le notizie più recenti verranno caricate qui.</p>
-        </div>
-      </aside>
+    <section class="latest-news" aria-labelledby="latest-heading">
+      <div class="section-heading">
+        <h2 id="latest-heading">Ultime notizie</h2>
+        <span>Le più recenti</span>
+      </div>
+      <div class="latest-news-grid" id="latest-news-grid">
+        <div class="empty-message">Caricamento delle ultime notizie…</div>
+      </div>
     </section>
 
     <section class="category" id="italia">
       <div class="section-heading"><h2>Italia</h2><span>Notizie nazionali</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="mondo">
       <div class="section-heading"><h2>Mondo</h2><span>Notizie internazionali</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="economia">
       <div class="section-heading"><h2>Economia e Borsa</h2><span>Numeri e mercati</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="sport">
       <div class="section-heading"><h2>Sport</h2><span>Risultati e protagonisti</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="tecnologia">
       <div class="section-heading"><h2>Tecnologia</h2><span>Innovazione digitale</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="scienza">
       <div class="section-heading"><h2>Salute e Scienza</h2><span>Ricerca e conoscenza</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="cultura">
       <div class="section-heading"><h2>Spettacolo e Cultura</h2><span>Arte e intrattenimento</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="ambiente">
       <div class="section-heading"><h2>Ambiente e Meteo</h2><span>Clima e territorio</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="category" id="viaggi">
       <div class="section-heading"><h2>Viaggi e Territorio</h2><span>Luoghi da scoprire</span></div>
-      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
+      <div class="cards"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
     <section class="editorial">
       <h2>Le fonti prima di tutto</h2>
       <p>
-        Punto Attuale raccoglie titoli e descrizioni da feed esterni. I contenuti
-        e i collegamenti rimandano alle fonti originali: verifica sempre data,
-        contesto e aggiornamenti direttamente sul sito della testata. La presenza
-        di una notizia nel feed non equivale a una verifica editoriale indipendente.
+        Punto Attuale raccoglie titoli e descrizioni da feed esterni. I collegamenti
+        rimandano alle fonti originali: verifica sempre data, contesto e aggiornamenti
+        direttamente sul sito della testata. La presenza di una notizia nel feed
+        non equivale a una verifica editoriale indipendente.
       </p>
     </section>
   </main>
@@ -693,10 +593,14 @@
         <p>Italia · Mondo · Economia e Borsa · Sport</p>
         <p>Tecnologia · Salute e Scienza · Spettacolo e Cultura</p>
         <p>Ambiente e Meteo · Viaggi e Territorio</p>
-        <p>Notizie da feed esterni. Consulta sempre la fonte originale.</p>
+        <p>Consulta sempre le fonti originali.</p>
       </div>
     </div>
   </footer>
+
+  <button id="back-to-top" type="button" aria-label="Torna all'inizio della pagina">
+    ↑ Torna in cima
+  </button>
 
   <script>
     (() => {
@@ -730,15 +634,28 @@
       };
 
       const statusEl = document.getElementById("rss-live-status");
-      const sideEl = document.getElementById("side-content");
       const searchInput = document.getElementById("news-search-input");
       const searchCount = document.getElementById("search-count");
+      const latestGrid = document.getElementById("latest-news-grid");
+      const backToTop = document.getElementById("back-to-top");
+
+      let allArticles = [];
+
+      function safeUrl(value) {
+        try {
+          const url = new URL(value);
+          return ["https:", "http:"].includes(url.protocol)
+            ? url.href
+            : null;
+        } catch (_) {
+          return null;
+        }
+      }
 
       function formatDate(value) {
         if (!value) return "Data non disponibile";
 
         const date = new Date(value);
-
         if (Number.isNaN(date.getTime())) {
           return "Data non disponibile";
         }
@@ -749,30 +666,14 @@
         }).format(date);
       }
 
-      function safeUrl(value) {
-        try {
-          const url = new URL(value);
-
-          if (url.protocol === "https:" || url.protocol === "http:") {
-            return url.href;
-          }
-
-          return null;
-        } catch (_) {
-          return null;
-        }
-      }
-
-      function createArticleCard(article) {
+      function createArticleCard(article, latest = false) {
         const card = document.createElement("article");
-        card.className = "news-card";
+        card.className = latest ? "latest-item" : "news-card";
 
         const meta = document.createElement("div");
         meta.className = "news-meta";
         meta.textContent =
-          (article.source || "Fonte esterna") +
-          " · " +
-          formatDate(article.publishedAt);
+          `${article.source || "Fonte esterna"} · ${formatDate(article.publishedAt)}`;
 
         const title = document.createElement("h3");
         title.textContent = article.title || "Titolo non disponibile";
@@ -813,105 +714,73 @@
         container.appendChild(item);
       }
 
-      function renderSidebar(articles) {
-        sideEl.replaceChildren();
-
-        const heading = document.createElement("h2");
-        heading.textContent = "Ultime notizie";
-        sideEl.appendChild(heading);
+      function renderLatest(articles) {
+        latestGrid.replaceChildren();
 
         const latest = [...articles]
           .sort((a, b) => {
-            return (
-              new Date(b.publishedAt || 0) -
-              new Date(a.publishedAt || 0)
-            );
+            const dateA = new Date(a.publishedAt || 0).getTime();
+            const dateB = new Date(b.publishedAt || 0).getTime();
+            return dateB - dateA;
           })
           .slice(0, 3);
 
         if (latest.length === 0) {
-          const message = document.createElement("p");
-          message.textContent = "Nessuna notizia recente disponibile.";
-          sideEl.appendChild(message);
+          showEmpty(latestGrid, "Nessuna notizia recente disponibile.");
           return;
         }
 
         latest.forEach(article => {
-          const item = document.createElement("article");
-          item.className = "side-item";
-
-          const label = document.createElement("span");
-          label.className = "eyebrow";
-          label.textContent =
-            CATEGORY_NAMES[article.category] || "Attualità";
-
-          const title = document.createElement("h3");
-          title.textContent = article.title || "Notizia";
-
-          item.append(label, title);
-
-          const href = safeUrl(article.url);
-
-          if (href) {
-            const link = document.createElement("a");
-            link.href = href;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.textContent = "Leggi la fonte ↗";
-            item.appendChild(link);
-          }
-
-          sideEl.appendChild(item);
+          latestGrid.appendChild(createArticleCard(article, true));
         });
       }
 
       function filterNews() {
-        const query = (searchInput.value || "")
-          .trim()
-          .toLocaleLowerCase("it");
-
+        const query = searchInput.value.trim().toLocaleLowerCase("it");
         let visible = 0;
         let total = 0;
 
-        CATEGORY_IDS.forEach(id => {
-          const section = document.getElementById(id);
-          const cards = section
-            ? [...section.querySelectorAll(".news-card")]
-            : [];
+        document.querySelectorAll(".news-card").forEach(card => {
+          total++;
 
-          total += cards.length;
-          let visibleInSection = 0;
+          const matches =
+            !query ||
+            card.textContent.toLocaleLowerCase("it").includes(query);
 
-          cards.forEach(card => {
-            const matches =
-              !query ||
-              card.textContent.toLocaleLowerCase("it").includes(query);
+          card.hidden = !matches;
 
-            card.hidden = !matches;
-
-            if (matches) {
-              visible++;
-              visibleInSection++;
-            }
-          });
-
-          if (section) {
-            section.hidden = Boolean(query) && visibleInSection === 0;
-          }
+          if (matches) visible++;
         });
 
-        if (searchCount) {
-          if (!query) {
-            searchCount.textContent = `${total} notizie disponibili`;
-          } else if (visible === 0) {
-            searchCount.textContent = "Nessuna notizia trovata";
-          } else {
-            searchCount.textContent = `${visible} di ${total} notizie`;
-          }
+        document.querySelectorAll(".category").forEach(section => {
+          const cards = [...section.querySelectorAll(".news-card")];
+          const visibleCards = cards.filter(card => !card.hidden).length;
+
+          section.hidden = Boolean(query) && visibleCards === 0;
+        });
+
+        document.querySelectorAll(".latest-item").forEach(card => {
+          const matches =
+            !query ||
+            card.textContent.toLocaleLowerCase("it").includes(query);
+
+          card.hidden = !matches;
+        });
+
+        const latestVisible = [...latestGrid.querySelectorAll(".latest-item")]
+          .some(card => !card.hidden);
+
+        latestGrid.closest(".latest-news").hidden =
+          Boolean(query) && !latestVisible;
+
+        if (!query) {
+          searchCount.textContent = `${total} notizie disponibili`;
+        } else if (visible === 0) {
+          searchCount.textContent = "Nessuna notizia trovata";
+        } else {
+          searchCount.textContent = `${visible} di ${total} notizie`;
         }
       }
-
-      searchInput.addEventListener("input", filterNews);
 
       async function loadNews() {
         try {
@@ -921,25 +790,20 @@
           });
 
           if (!response.ok) {
-            throw new Error(
-              `servizio non disponibile (HTTP ${response.status})`
-            );
+            throw new Error(`Errore HTTP ${response.status}`);
           }
 
           const data = await response.json();
 
           if (!data || data.ok !== true || !data.categories) {
-            throw new Error("formato dei dati non riconosciuto");
+            throw new Error("Formato dei dati non riconosciuto");
           }
 
-          let total = 0;
-          const allArticles = [];
+          allArticles = [];
 
-          for (const id of CATEGORY_IDS) {
+          CATEGORY_IDS.forEach(id => {
             const section = document.getElementById(id);
-            const container =
-              section && section.querySelector(".cards");
-
+            const container = section.querySelector(".cards");
             const category = data.categories[id];
 
             const articles =
@@ -947,46 +811,45 @@
                 ? category.articles
                 : [];
 
-            if (!container) continue;
-
             container.replaceChildren();
-
-            if (articles.length === 0) {
-              showEmpty(
-                container,
-                "Nessun articolo disponibile al momento per questa categoria."
-              );
-            } else {
-              articles.forEach(article => {
-                container.appendChild(createArticleCard(article));
-
-                allArticles.push({
-                  ...article,
-                  category: article.category || id
-                });
-              });
-
-              total += articles.length;
-            }
 
             const countLabel =
               section.querySelector(".section-heading span");
 
             if (countLabel) {
               countLabel.textContent =
-                `${articles.length} ` +
-                (articles.length === 1
-                  ? "notizia disponibile"
-                  : "notizie disponibili");
+                `${articles.length} ${
+                  articles.length === 1
+                    ? "notizia disponibile"
+                    : "notizie disponibili"
+                }`;
             }
-          }
 
-          renderSidebar(allArticles);
+            if (articles.length === 0) {
+              showEmpty(
+                container,
+                "Nessun articolo disponibile al momento per questa categoria."
+              );
+              return;
+            }
+
+            articles.forEach(article => {
+              const normalized = {
+                ...article,
+                category: article.category || id
+              };
+
+              allArticles.push(normalized);
+              container.appendChild(createArticleCard(normalized));
+            });
+          });
+
+          renderLatest(allArticles);
 
           statusEl.classList.remove("error");
           statusEl.textContent =
-            `Notizie collegate correttamente: ${total} articoli caricati. ` +
-            "Le notizie provengono da feed esterni; consulta le fonti originali per i dettagli.";
+            `Notizie collegate correttamente: ${allArticles.length} articoli caricati. ` +
+            "Consulta le fonti originali per tutti i dettagli.";
 
           filterNews();
 
@@ -996,28 +859,39 @@
           statusEl.classList.add("error");
           statusEl.textContent =
             "Impossibile caricare le notizie in questo momento. " +
-            error.message +
-            ". Riprova tra poco.";
+            "Riprova tra poco.";
 
-          if (searchCount) {
-            searchCount.textContent =
-              "Ricerca non disponibile finché le notizie non vengono caricate";
-          }
+          showEmpty(
+            latestGrid,
+            "Le ultime notizie non sono momentaneamente disponibili."
+          );
 
           CATEGORY_IDS.forEach(id => {
-            const section = document.getElementById(id);
             const container =
-              section && section.querySelector(".cards");
+              document.getElementById(id).querySelector(".cards");
 
-            if (container) {
-              showEmpty(
-                container,
-                "Le notizie non sono momentaneamente disponibili. Riprova più tardi."
-              );
-            }
+            showEmpty(
+              container,
+              "Le notizie non sono momentaneamente disponibili. Riprova più tardi."
+            );
           });
+
+          searchCount.textContent = "Ricerca momentaneamente non disponibile";
         }
       }
+
+      searchInput.addEventListener("input", filterNews);
+
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 350);
+      }, { passive: true });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
 
       loadNews();
 
