@@ -1,0 +1,16 @@
+
+{
+  "aggiornamento_minuti": 30,
+  "massimo_articoli_per_categoria": 10,
+  "categorie": {
+    "italia": [],
+    "mondo": [],
+    "economia": [],
+    "sport": [],
+    "tecnologia": [],
+    "scienza": [],
+    "cultura": [],
+    "ambiente": [],
+    "viaggi": []
+  }
+}
