@@ -19,12 +19,9 @@
       --line: #e3e8ee;
       --paper: #f4f7fa;
       --white: #ffffff;
-      --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
@@ -36,12 +33,10 @@
       background: var(--paper);
       color: var(--ink);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    button, input {
-      font: inherit;
-    }
+    button, input { font: inherit; }
 
     .container {
       width: min(1180px, calc(100% - 32px));
@@ -49,7 +44,7 @@
     }
 
     .topbar {
-      padding: 8px 0;
+      padding: 7px 0;
       background: #0a111d;
       color: #d7e1ec;
       font-size: 12px;
@@ -71,44 +66,42 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      padding: 20px 0;
+      padding: 17px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 12px;
       text-decoration: none;
     }
 
     .brand-icon {
-      width: 54px;
-      height: 54px;
+      width: 48px;
+      height: 48px;
       flex-shrink: 0;
     }
 
     .brand-name {
       margin: 0;
       color: var(--navy);
-      font-size: clamp(25px, 4vw, 36px);
+      font-size: clamp(24px, 4vw, 35px);
       font-weight: 900;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
+      letter-spacing: -1.3px;
+      line-height: 1.15;
     }
 
-    .brand-name span {
-      color: var(--teal-dark);
-    }
+    .brand-name span { color: var(--teal-dark); }
 
     .tagline {
-      margin: 5px 0 0;
+      margin: 3px 0 0;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .brand-note {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
       letter-spacing: 1px;
       text-align: right;
@@ -129,11 +122,11 @@
 
     nav a {
       display: block;
-      padding: 10px 11px;
+      padding: 9px 10px;
       border-bottom: 2px solid transparent;
-      border-radius: 6px;
+      border-radius: 5px;
       color: white;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: bold;
       text-decoration: none;
       white-space: nowrap;
@@ -145,18 +138,16 @@
       border-bottom-color: var(--teal);
     }
 
-    main {
-      padding: 24px 0 48px;
-    }
+    main { padding: 20px 0 42px; }
 
     .live-status {
-      margin-bottom: 18px;
-      padding: 11px 15px;
+      margin-bottom: 15px;
+      padding: 10px 13px;
       border: 1px solid #b9e9e4;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #e2f8f5;
       color: #075e58;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .live-status.error {
@@ -165,245 +156,271 @@
       color: #715a20;
     }
 
+    /* Ricerca */
+
     .news-search {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-      padding: 14px;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 10px;
       background: white;
-      box-shadow: 0 5px 18px rgba(16, 24, 39, .04);
     }
 
     .news-search label {
       color: var(--navy);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
     }
 
     .news-search input {
       width: 100%;
       min-width: 0;
-      padding: 11px 13px;
+      padding: 10px 12px;
       border: 1px solid #cbd5df;
-      border-radius: 8px;
+      border-radius: 7px;
       outline: none;
       background: #fbfcfe;
-      color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .news-search input:focus {
       border-color: var(--teal-dark);
-      box-shadow: 0 0 0 3px rgba(16, 184, 173, .16);
+      box-shadow: 0 0 0 3px rgba(16, 184, 173, .13);
     }
 
     .search-button {
-      padding: 11px 20px;
-      border: none;
-      border-radius: 8px;
+      padding: 10px 18px;
+      border: 0;
+      border-radius: 7px;
       background: var(--navy);
       color: white;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .search-button:hover {
-      background: var(--teal-dark);
-    }
+    .search-button:hover { background: var(--teal-dark); }
 
     .search-count {
       grid-column: 1 / -1;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
     }
+
+    /* Titoli delle sezioni */
 
     .section-heading {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
       border-bottom: 2px solid var(--navy);
     }
 
     .section-heading h2 {
       margin: 0;
-      font-size: 25px;
-      letter-spacing: -.5px;
+      font-size: 22px;
+      letter-spacing: -.4px;
       line-height: 1.3;
     }
 
     .section-heading span {
       color: var(--teal-dark);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: bold;
-      letter-spacing: .5px;
       text-align: right;
       text-transform: uppercase;
     }
 
-    .latest-news {
-      margin-bottom: 34px;
-    }
+    .latest-news { margin-bottom: 27px; }
 
     .latest-news-grid,
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 12px;
     }
 
-    .latest-item,
-    .news-card {
-      display: flex;
+    /* Schede compatte con miniatura */
+
+    .news-card,
+    .latest-item {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      align-content: start;
+      align-items: start;
+      gap: 5px 12px;
       min-width: 0;
-      flex-direction: column;
-      gap: 10px;
-      padding: 20px;
+      padding: 12px;
       overflow-wrap: anywhere;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: 10px;
       background: white;
-      box-shadow: 0 7px 22px rgba(16, 24, 39, .045);
-      transition: transform .18s ease, box-shadow .18s ease;
+      box-shadow: 0 3px 12px rgba(16, 24, 39, .035);
+      transition: box-shadow .18s ease, transform .18s ease;
     }
 
-    .latest-item:hover,
-    .news-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 11px 25px rgba(16, 24, 39, .09);
+    .news-card:hover,
+    .latest-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 7px 17px rgba(16, 24, 39, .08);
+    }
+
+    .news-image {
+      grid-column: 1;
+      grid-row: 1 / span 4;
+      display: block;
+      width: 92px;
+      height: 78px;
+      border-radius: 7px;
+      object-fit: cover;
+      background: #e8edf2;
     }
 
     .news-meta {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .4px;
+      grid-column: 2;
+      min-width: 0;
+      color: var(--teal-dark);
+      font-size: 9px;
+      font-weight: bold;
+      letter-spacing: .35px;
+      line-height: 1.4;
       text-transform: uppercase;
     }
 
-    .latest-item h3,
-    .news-card h3 {
+    .news-card h3,
+    .latest-item h3 {
+      grid-column: 2;
+      display: -webkit-box;
       margin: 0;
-      font-size: 17px;
-      line-height: 1.45;
+      overflow: hidden;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
 
-    .latest-item p,
-    .news-card p {
+    .news-card p,
+    .latest-item p {
+      grid-column: 2;
+      display: -webkit-box;
       margin: 0;
+      overflow: hidden;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 11px;
+      line-height: 1.45;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
 
     .source-link {
-      display: inline-block;
-      margin-top: auto;
-      padding-top: 4px;
+      grid-column: 2;
+      justify-self: start;
+      margin-top: 2px;
       color: var(--teal-dark);
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       text-decoration: none;
     }
 
-    .source-link:hover {
-      text-decoration: underline;
-    }
+    .source-link:hover { text-decoration: underline; }
 
     .category {
-      margin-top: 34px;
-      scroll-margin-top: 20px;
+      margin-top: 28px;
+      scroll-margin-top: 16px;
     }
 
     .empty-message {
       grid-column: 1 / -1;
-      padding: 18px;
+      padding: 14px;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 8px;
       background: white;
       color: var(--muted);
+      font-size: 13px;
     }
 
-    .search-results {
-      margin-bottom: 32px;
-    }
+    .search-results { margin-bottom: 28px; }
 
     .search-results[hidden],
     .latest-news[hidden],
-    .category[hidden],
-    .news-card[hidden],
-    .latest-item[hidden] {
+    .category[hidden] {
       display: none !important;
     }
 
     .editorial {
-      margin-top: 38px;
-      padding: 25px;
-      border-radius: var(--radius);
+      margin-top: 32px;
+      padding: 20px;
+      border-radius: 10px;
       background: var(--navy);
       color: white;
     }
 
     .editorial h2 {
-      margin: 0 0 8px;
-      font-size: 22px;
+      margin: 0 0 6px;
+      font-size: 19px;
     }
 
     .editorial p {
       max-width: 850px;
       margin: 0;
       color: #d0dbe6;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     footer {
-      padding: 27px 0;
+      padding: 23px 0;
       background: #0a111d;
       color: #d7e1ec;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .footer-row {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
     }
 
     .footer-brand {
       color: white;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
     }
 
     footer p {
-      margin: 5px 0;
+      margin: 4px 0;
       color: #aab8c8;
     }
 
+    /* Pulsante torna in cima */
+
     #back-to-top {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 20px;
+      bottom: 20px;
       z-index: 1000;
-      display: block;
-      padding: 12px 17px;
+      padding: 11px 15px;
       border: 0;
-      border-radius: 30px;
+      border-radius: 25px;
       background: var(--navy);
       color: white;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 5px 18px rgba(0, 0, 0, .2);
+      font-size: 13px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
+      transform: translateY(8px);
       transition: opacity .2s, transform .2s, visibility .2s;
     }
 
@@ -413,11 +430,9 @@
       transform: translateY(0);
     }
 
-    #back-to-top:hover {
-      background: var(--teal-dark);
-    }
+    #back-to-top:hover { background: var(--teal-dark); }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
       nav .container {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -429,85 +444,73 @@
       }
     }
 
-    @media (max-width: 560px) {
-      .container {
-        width: min(100% - 24px, 1180px);
-      }
+    @media (max-width: 620px) {
+      .container { width: calc(100% - 22px); }
 
-      .brand-row {
-        padding: 16px 0;
-      }
+      .brand-row { padding: 13px 0; }
 
       .brand-icon {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
       }
 
-      .brand-name {
-        font-size: 24px;
-      }
+      .brand-name { font-size: 23px; }
 
-      .tagline {
-        font-size: 12px;
-      }
+      .tagline { font-size: 11px; }
 
-      .brand-note {
-        display: none;
-      }
+      .brand-note { display: none; }
 
       .topbar .container {
         flex-direction: column;
-        gap: 3px;
-      }
-
-      nav a {
-        flex-shrink: 0;
-        padding: 10px;
-        font-size: 12px;
+        gap: 2px;
       }
 
       .news-search {
         grid-template-columns: minmax(0, 1fr) auto;
       }
 
-      .news-search label {
-        grid-column: 1 / -1;
-      }
+      .news-search label { grid-column: 1 / -1; }
 
-      .news-search input {
-        grid-column: 1;
-      }
+      .news-search input { grid-column: 1; }
 
-      .search-button {
-        grid-column: 2;
-      }
+      .search-button { grid-column: 2; }
 
       .cards,
       .latest-news-grid {
         grid-template-columns: 1fr;
       }
 
-      .section-heading h2 {
-        font-size: 22px;
+      .news-card,
+      .latest-item {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 4px 10px;
+        padding: 10px;
+      }
+
+      .news-image {
+        width: 82px;
+        height: 72px;
+      }
+
+      .news-card h3,
+      .latest-item h3 {
+        font-size: 13px;
+      }
+
+      .news-card p,
+      .latest-item p {
+        font-size: 11px;
       }
 
       #back-to-top {
-        right: 14px;
-        bottom: 14px;
-        padding: 11px 15px;
+        right: 12px;
+        bottom: 12px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .latest-item,
-      .news-card,
-      #back-to-top {
-        transition: none;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
@@ -560,12 +563,9 @@
 
     <form class="news-search" id="news-search-form" role="search">
       <label for="news-search-input">Cerca notizie</label>
-      <input
-        id="news-search-input"
-        type="search"
+      <input id="news-search-input" type="search"
         placeholder="Scrivi una parola o un argomento…"
-        autocomplete="off"
-      >
+        autocomplete="off">
       <button class="search-button" type="submit">Cerca</button>
       <span class="search-count" id="search-count" aria-live="polite">
         Caricamento notizie…
@@ -586,7 +586,7 @@
         <span>Le più recenti</span>
       </div>
       <div class="latest-news-grid" id="latest-news-grid">
-        <div class="empty-message">Caricamento delle ultime notizie…</div>
+        <div class="empty-message">Caricamento delle notizie…</div>
       </div>
     </section>
 
@@ -638,10 +638,9 @@
     <section class="editorial">
       <h2>Le fonti prima di tutto</h2>
       <p>
-        Punto Attuale raccoglie titoli e descrizioni da feed esterni. I collegamenti
-        rimandano alle fonti originali: verifica data, contesto e aggiornamenti
-        direttamente sul sito della testata. La presenza di una notizia nel feed
-        non equivale a una verifica editoriale indipendente.
+        Punto Attuale raccoglie titoli e descrizioni da feed esterni.
+        I collegamenti rimandano alle fonti originali: consulta le testate
+        per leggere gli articoli completi e gli aggiornamenti.
       </p>
     </section>
   </main>
@@ -656,7 +655,6 @@
         <p>Italia · Mondo · Economia e Borsa · Sport</p>
         <p>Tecnologia · Salute e Scienza · Spettacolo e Cultura</p>
         <p>Ambiente e Meteo · Viaggi e Territorio</p>
-        <p>Consulta sempre le fonti originali.</p>
       </div>
     </div>
   </footer>
@@ -673,15 +671,8 @@
         "https://punto-attuale-rss.mikerusso098.workers.dev/api/news";
 
       const CATEGORY_IDS = [
-        "italia",
-        "mondo",
-        "economia",
-        "sport",
-        "tecnologia",
-        "scienza",
-        "cultura",
-        "ambiente",
-        "viaggi"
+        "italia", "mondo", "economia", "sport", "tecnologia",
+        "scienza", "cultura", "ambiente", "viaggi"
       ];
 
       const CATEGORY_NAMES = {
@@ -711,59 +702,125 @@
       let isLoading = false;
 
       function safeUrl(value) {
+        if (typeof value !== "string" || !value.trim()) return null;
+
         try {
           const url = new URL(value);
 
           if (url.protocol === "https:" || url.protocol === "http:") {
             return url.href;
           }
+        } catch (_) {}
 
-          return null;
-        } catch (_) {
-          return null;
+        return null;
+      }
+
+      // Legge i formati immagine più comuni restituiti dai feed RSS.
+      function getArticleImage(article) {
+        const candidates = [
+          article.image,
+          article.imageUrl,
+          article.image_url,
+          article.thumbnail,
+          article.thumbnailUrl,
+          article.thumbnail_url,
+          article.enclosure && article.enclosure.url,
+          article.enclosure && article.enclosure.link,
+          article.media && article.media.url,
+          article.mediaThumbnail,
+          article.media_thumbnail
+        ];
+
+        for (const candidate of candidates) {
+          let value = candidate;
+
+          if (value && typeof value === "object") {
+            value = value.url || value.href || value.src;
+          }
+
+          const url = safeUrl(value);
+          if (url) return url;
         }
+
+        return null;
       }
 
       function formatDate(value) {
         if (!value) return "Data non disponibile";
 
         const date = new Date(value);
-
-        if (Number.isNaN(date.getTime())) {
-          return "Data non disponibile";
-        }
+        if (Number.isNaN(date.getTime())) return "Data non disponibile";
 
         return new Intl.DateTimeFormat("it-IT", {
-          dateStyle: "medium",
-          timeStyle: "short"
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
         }).format(date);
       }
 
       function articleTimestamp(article) {
-        const date = new Date(article.publishedAt || 0).getTime();
-        return Number.isFinite(date) ? date : 0;
+        const value = new Date(article.publishedAt || 0).getTime();
+        return Number.isFinite(value) ? value : 0;
+      }
+
+      // Accorcia il testo anche nel contenuto HTML ricevuto dai feed.
+      function cleanDescription(value) {
+        if (!value) return "";
+
+        const temp = document.createElement("div");
+        temp.innerHTML = String(value);
+
+        return (temp.textContent || temp.innerText || "")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function shortDescription(value, maxLength = 125) {
+        const text = cleanDescription(value);
+
+        if (text.length <= maxLength) return text;
+
+        const shortened = text.slice(0, maxLength);
+        const lastSpace = shortened.lastIndexOf(" ");
+        return shortened.slice(0, lastSpace > 70 ? lastSpace : maxLength).trim() + "…";
       }
 
       function createArticleCard(article, isLatest = false) {
         const card = document.createElement("article");
         card.className = isLatest ? "latest-item" : "news-card";
 
-        const meta = document.createElement("div");
-        meta.className = "news-meta";
-
         const categoryName =
           CATEGORY_NAMES[article.category] || "Attualità";
 
+        const meta = document.createElement("div");
+        meta.className = "news-meta";
         meta.textContent =
-          `${categoryName} · ${article.source || "Fonte esterna"} · ${formatDate(article.publishedAt)}`;
+          `${categoryName} · ${formatDate(article.publishedAt)}`;
 
         const title = document.createElement("h3");
-        title.textContent = article.title || "Titolo non disponibile";
+        title.textContent = cleanDescription(article.title) || "Titolo non disponibile";
 
         const description = document.createElement("p");
-        description.textContent =
-          article.description ||
+        description.textContent = shortDescription(article.description, 125) ||
           "Apri la fonte originale per leggere tutti i dettagli.";
+
+        const imageUrl = getArticleImage(article);
+
+        if (imageUrl) {
+          const image = document.createElement("img");
+          image.className = "news-image";
+          image.src = imageUrl;
+          image.alt = "";
+          image.loading = "lazy";
+          image.decoding = "async";
+          image.referrerPolicy = "no-referrer";
+
+          image.addEventListener("error", () => {
+            image.remove();
+          }, { once: true });
+
+          card.appendChild(image);
+        }
 
         card.append(meta, title, description);
 
@@ -777,10 +834,6 @@
           link.rel = "noopener noreferrer";
           link.textContent = "Leggi la fonte ↗";
           card.appendChild(link);
-        } else {
-          const note = document.createElement("p");
-          note.textContent = "Link alla fonte non disponibile.";
-          card.appendChild(note);
         }
 
         return card;
@@ -804,19 +857,11 @@
         container.replaceChildren();
 
         if (countLabel) {
-          countLabel.textContent =
-            `${articles.length} ${
-              articles.length === 1
-                ? "notizia disponibile"
-                : "notizie disponibili"
-            }`;
+          countLabel.textContent = `${articles.length} notizie`;
         }
 
-        if (articles.length === 0) {
-          showEmpty(
-            container,
-            "Nessun articolo disponibile al momento per questa categoria."
-          );
+        if (!articles.length) {
+          showEmpty(container, "Nessuna notizia disponibile al momento.");
           return;
         }
 
@@ -830,9 +875,9 @@
 
         const latest = [...allArticles]
           .sort((a, b) => articleTimestamp(b) - articleTimestamp(a))
-          .slice(0, 3);
+          .slice(0, 6);
 
-        if (latest.length === 0) {
+        if (!latest.length) {
           showEmpty(latestGrid, "Nessuna notizia recente disponibile.");
           return;
         }
@@ -844,7 +889,6 @@
 
       function performSearch() {
         const query = searchInput.value.trim().toLocaleLowerCase("it");
-
         searchResults.replaceChildren();
 
         if (!query) {
@@ -855,25 +899,20 @@
             section.hidden = false;
           });
 
-          searchCount.textContent =
-            `${allArticles.length} notizie disponibili`;
-
+          searchCount.textContent = `${allArticles.length} notizie disponibili`;
           return;
         }
 
         const matches = allArticles.filter(article => {
-          const searchableText = [
+          const text = [
             article.title,
-            article.description,
+            cleanDescription(article.description),
             article.source,
             article.category,
             CATEGORY_NAMES[article.category]
-          ]
-            .filter(Boolean)
-            .join(" ")
-            .toLocaleLowerCase("it");
+          ].filter(Boolean).join(" ").toLocaleLowerCase("it");
 
-          return searchableText.includes(query);
+          return text.includes(query);
         });
 
         searchSection.hidden = false;
@@ -883,15 +922,12 @@
           section.hidden = true;
         });
 
-        searchResultsLabel.textContent =
-          `${matches.length} ${
-            matches.length === 1 ? "risultato" : "risultati"
-          }`;
+        searchResultsLabel.textContent = `${matches.length} risultati`;
 
-        if (matches.length === 0) {
+        if (!matches.length) {
           showEmpty(
             searchResults,
-            `Nessuna notizia trovata per "${searchInput.value.trim()}". Prova un'altra parola.`
+            `Nessuna notizia trovata per "${searchInput.value.trim()}".`
           );
         } else {
           matches
@@ -902,9 +938,7 @@
         }
 
         searchCount.textContent =
-          `${matches.length} ${
-            matches.length === 1 ? "risultato trovato" : "risultati trovati"
-          }`;
+          `${matches.length} ${matches.length === 1 ? "risultato trovato" : "risultati trovati"}`;
       }
 
       searchForm.addEventListener("submit", event => {
@@ -913,9 +947,7 @@
       });
 
       searchInput.addEventListener("input", () => {
-        if (searchInput.value.trim() === "") {
-          performSearch();
-        }
+        if (!searchInput.value.trim()) performSearch();
       });
 
       async function loadNews() {
@@ -923,10 +955,7 @@
         isLoading = true;
 
         try {
-          const response = await fetch(API_URL, {
-            method: "GET",
-            cache: "no-store"
-          });
+          const response = await fetch(API_URL, { cache: "no-store" });
 
           if (!response.ok) {
             throw new Error(`Errore HTTP ${response.status}`);
@@ -942,58 +971,50 @@
 
           CATEGORY_IDS.forEach(id => {
             const category = data.categories[id];
-
             const articles =
               category && Array.isArray(category.articles)
                 ? category.articles
                 : [];
 
-            const normalizedArticles = articles.map(article => ({
+            const normalized = articles.map(article => ({
               ...article,
               category: article.category || id
             }));
 
-            allArticles.push(...normalizedArticles);
-            renderCategory(id, normalizedArticles);
+            allArticles.push(...normalized);
+            renderCategory(id, normalized);
           });
 
           renderLatest();
 
           statusEl.classList.remove("error");
           statusEl.textContent =
-            `Notizie collegate correttamente: ${allArticles.length} articoli caricati. ` +
-            "Consulta le fonti originali per tutti i dettagli.";
+            `Notizie collegate correttamente: ${allArticles.length} articoli caricati. Consulta le fonti originali per i dettagli.`;
 
-          // Se l'utente sta cercando, aggiorna anche i risultati.
           if (searchInput.value.trim()) {
             performSearch();
           } else {
-            searchCount.textContent =
-              `${allArticles.length} notizie disponibili`;
+            searchCount.textContent = `${allArticles.length} notizie disponibili`;
           }
 
         } catch (error) {
-          console.error("Errore nel collegamento RSS:", error);
+          console.error("Errore nel caricamento delle notizie:", error);
 
           statusEl.classList.add("error");
           statusEl.textContent =
-            "Impossibile caricare le notizie in questo momento. Riprova più tardi.";
+            "Impossibile aggiornare le notizie. Riprova più tardi.";
 
-          if (allArticles.length === 0) {
-            showEmpty(
-              latestGrid,
-              "Le ultime notizie non sono momentaneamente disponibili."
-            );
+          if (!allArticles.length) {
+            showEmpty(latestGrid, "Notizie momentaneamente non disponibili.");
 
             CATEGORY_IDS.forEach(id => {
-              const section = document.getElementById(id);
               showEmpty(
-                section.querySelector(".cards"),
-                "Le notizie non sono momentaneamente disponibili. Riprova più tardi."
+                document.querySelector(`#${id} .cards`),
+                "Notizie momentaneamente non disponibili."
               );
             });
 
-            searchCount.textContent = "Notizie momentaneamente non disponibili";
+            searchCount.textContent = "Notizie non disponibili";
           }
         } finally {
           isLoading = false;
@@ -1002,25 +1023,15 @@
 
       function updateBackToTop() {
         const scrollPosition =
-          window.scrollY ||
-          document.documentElement.scrollTop ||
-          document.body.scrollTop ||
-          0;
+          window.scrollY || document.documentElement.scrollTop || 0;
 
         backToTop.classList.toggle("visible", scrollPosition > 250);
       }
 
-      window.addEventListener("scroll", updateBackToTop, {
-        passive: true
-      });
-
-      window.addEventListener("load", updateBackToTop);
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
 
       backToTop.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
       updateBackToTop();
