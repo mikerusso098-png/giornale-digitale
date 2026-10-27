@@ -4,21 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Notizie dall'Italia e dal mondo, economia, Borsa e sport. Una nuova idea di informazione digitale.">
-  <meta name="theme-color" content="#102a43">
-  <title>Giornale Digitale | Italia, Mondo, Economia e Sport</title>
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Punto Attuale: notizie dall'Italia, dal mondo, economia, borsa e sport.">
+  <title>Punto Attuale | L'informazione sempre aggiornata</title>
+
   <style>
     :root {
-      --navy: #102a43;
-      --blue: #1769aa;
-      --red: #d93838;
-      --paper: #f4f6f8;
-      --ink: #192b3a;
-      --muted: #667788;
-      --line: #e0e6ec;
+      --navy: #101827;
+      --navy-light: #1c3048;
+      --teal: #10b8ad;
+      --teal-dark: #087f7a;
+      --ink: #182230;
+      --muted: #657184;
+      --line: #e3e8ee;
+      --paper: #f4f7fa;
+      --white: #ffffff;
+      --radius: 16px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -28,426 +38,612 @@
       line-height: 1.6;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .topline {
-      background: var(--navy);
-      color: white;
-      padding: 8px 5%;
-      font-size: 12px;
-      letter-spacing: 1px;
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    .topbar {
+      background: #0a111d;
+      color: #d7e1ec;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     header {
-      background: white;
-      padding: 26px 5% 20px;
+      background: var(--white);
       border-bottom: 1px solid var(--line);
     }
 
-    .brand {
-      max-width: 1200px;
-      margin: auto;
+    .brand-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
     }
 
-    .brand h1 {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
       margin: 0;
-      font-family: Georgia, serif;
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
       color: var(--navy);
+      font-size: clamp(25px, 4vw, 36px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
     }
 
-    .brand h1 span { color: var(--red); }
+    .brand-name span {
+      color: var(--teal-dark);
+    }
 
-    .brand p {
-      margin: 7px 0 0;
+    .tagline {
+      margin: 5px 0 0;
       color: var(--muted);
       font-size: 14px;
     }
 
-    .edition {
+    .brand-note {
       color: var(--muted);
       font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
       text-align: right;
     }
 
     nav {
       background: var(--navy);
       color: white;
-      padding: 0 5%;
     }
 
-    .nav-inner {
-      max-width: 1200px;
-      margin: auto;
+    nav .container {
       display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
+      gap: 4px;
+      overflow-x: auto;
     }
 
     nav a {
       display: block;
-      padding: 14px 0;
-      font-size: 13px;
+      padding: 14px 17px;
+      white-space: nowrap;
+      font-size: 14px;
       font-weight: bold;
+      border-bottom: 3px solid transparent;
     }
 
-    nav a:hover { color: #ffb6b6; }
-
-    main {
-      max-width: 1200px;
-      margin: 28px auto;
-      padding: 0 20px;
+    nav a:hover,
+    nav a:focus {
+      background: var(--navy-light);
+      border-bottom-color: var(--teal);
     }
 
-    .notice {
-      background: #fff5df;
-      border: 1px solid #f0dba9;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
-      color: #654c19;
-      font-size: 13px;
-    }
-
-    .section-label {
-      color: var(--red);
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .lead {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
-      margin-bottom: 36px;
-    }
-
-    .lead-main, .lead-side, .card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .hero-art {
-      min-height: 240px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #102a43, #1769aa);
-      color: white;
-      font-family: Georgia, serif;
-      font-size: clamp(28px, 5vw, 48px);
-      text-align: center;
-      padding: 24px;
-    }
-
-    .hero-art span {
-      display: block;
-      color: #cfe8ff;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-top: 10px;
-    }
-
-    .lead-copy { padding: 24px; }
-
-    .lead-copy h2 {
-      margin: 10px 0;
-      font-family: Georgia, serif;
-      font-size: clamp(25px, 3vw, 36px);
-      line-height: 1.2;
-    }
-
-    .lead-copy p, .card p {
-      color: var(--muted);
+    .ticker {
+      background: #e2f8f5;
+      border-bottom: 1px solid #b9e9e4;
+      padding: 11px 0;
       font-size: 14px;
     }
 
-    .side-item {
-      padding: 22px;
-      border-bottom: 1px solid var(--line);
+    .ticker .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .side-item:last-child { border-bottom: 0; }
+    .ticker-label,
+    .category-label {
+      display: inline-block;
+      background: var(--teal);
+      color: #062a2a;
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    main {
+      padding: 32px 0 50px;
+    }
+
+    .intro {
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 8px 0 12px;
+      font-size: clamp(30px, 5vw, 46px);
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+    }
+
+    .intro p {
+      max-width: 680px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .demo-notice {
+      padding: 12px 15px;
+      margin-bottom: 22px;
+      background: #fff4d4;
+      border: 1px solid #f2dfa1;
+      border-radius: 10px;
+      color: #715a20;
+      font-size: 13px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+    }
+
+    .hero-card,
+    .side-card,
+    .category-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(16, 24, 39, 0.05);
+    }
+
+    .hero-art {
+      min-height: 310px;
+      padding: 28px;
+      display: flex;
+      align-items: flex-end;
+      color: white;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(16,184,173,.65), transparent 25%),
+        linear-gradient(135deg, #101827, #1c3e54 65%, #087f7a);
+    }
+
+    .hero-art h2 {
+      margin: 13px 0 9px;
+      max-width: 650px;
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .hero-art p {
+      margin: 0;
+      color: #e5f1f4;
+    }
+
+    .side-content {
+      padding: 22px;
+    }
+
+    .side-content h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+
+    .side-item {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .side-item:first-of-type {
+      border-top: 0;
+    }
 
     .side-item h3 {
-      margin: 7px 0;
-      font-family: Georgia, serif;
-      font-size: 21px;
-      line-height: 1.3;
+      margin: 6px 0;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
-    .section {
-      margin: 38px 0;
+    .side-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .category {
+      margin-top: 32px;
       scroll-margin-top: 20px;
     }
 
     .section-heading {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 2px solid var(--navy);
-      margin-bottom: 18px;
+      align-items: center;
       gap: 12px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 10px;
     }
 
     .section-heading h2 {
-      font-family: Georgia, serif;
-      font-size: 26px;
-      margin: 0 0 10px;
+      margin: 0;
+      font-size: 25px;
+      letter-spacing: -0.5px;
     }
 
     .section-heading span {
-      color: var(--muted);
+      color: var(--teal-dark);
       font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
 
-    .card { padding: 20px; }
-
-    .card h3 {
-      font-family: Georgia, serif;
-      font-size: 21px;
-      line-height: 1.3;
-      margin: 10px 0;
+    .category-card {
+      padding: 21px;
     }
 
-    .tag {
-      display: inline-block;
-      background: #eaf2fa;
-      color: var(--blue);
-      border-radius: 4px;
-      padding: 4px 8px;
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .placeholder {
-      border: 1px dashed #b7c7d6;
-      background: #edf2f6;
-      border-radius: 7px;
-      padding: 18px;
-      color: #526779;
-      font-size: 12px;
-      text-align: center;
+    .card-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
       margin-bottom: 14px;
+      border-radius: 12px;
+      background: #e2f8f5;
+      color: var(--teal-dark);
+      font-size: 20px;
+      font-weight: 900;
     }
 
-    .market {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+    .category-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
     }
 
-    .market strong { display: block; font-size: 18px; }
-    .market small { color: var(--muted); }
+    .category-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-    footer {
+    .editorial {
+      margin-top: 32px;
+      padding: 26px;
+      border-radius: var(--radius);
       background: var(--navy);
       color: white;
-      padding: 32px 5%;
-      margin-top: 50px;
+    }
+
+    .editorial h2 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .editorial p {
+      max-width: 850px;
+      margin: 0;
+      color: #d0dbe6;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #0a111d;
+      color: #d7e1ec;
+      padding: 28px 0;
       font-size: 13px;
     }
 
-    .footer-inner { max-width: 1200px; margin: auto; }
-    footer p { color: #d3deea; }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-    @media (max-width: 720px) {
-      .lead { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr; }
-      .brand { align-items: flex-start; }
-      .edition { display: none; }
-      .nav-inner { gap: 18px; }
-      main { padding: 0 14px; }
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+    }
+
+    footer p {
+      color: #aab8c8;
+      margin: 5px 0;
+    }
+
+    @media (max-width: 760px) {
+      .brand-note {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        min-height: 260px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .container {
+        flex-direction: column;
+        gap: 3px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="topline">INFORMAZIONE · APPROFONDIMENTO · ATTUALITÀ</div>
+  <div class="topbar">
+    <div class="container">
+      <span>Una lettura chiara dei fatti</span>
+      <span>Italia · Mondo · Economia · Sport</span>
+    </div>
+  </div>
 
   <header>
-    <div class="brand">
-      <div>
-        <h1>GIORNALE <span>DIGITALE</span></h1>
-        <p>Le notizie, spiegate con chiarezza.</p>
+    <div class="container brand-row">
+      <a class="brand" href="#home" aria-label="Punto Attuale - Homepage">
+        <svg class="brand-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 59C26 49 9 33 9 22a23 23 0 0 1 46 0C55 33 38 49 32 59Z" fill="#101827"/>
+          <circle cx="32" cy="22" r="13" fill="#10b8ad"/>
+          <circle cx="32" cy="22" r="5" fill="#101827"/>
+          <path d="M44 10a17 17 0 0 1 6 12M49 5a24 24 0 0 1 9 17" fill="none" stroke="#10b8ad" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+
+        <div>
+          <p class="brand-name">PUNTO <span>ATTUALE</span></p>
+          <p class="tagline">L'informazione sempre aggiornata</p>
+        </div>
+      </a>
+
+      <div class="brand-note">
+        IL TUO PUNTO<br>
+        DI VISTA SUI FATTI
       </div>
-      <div class="edition">EDIZIONE ONLINE<br>Italia e mondo</div>
     </div>
   </header>
 
   <nav aria-label="Navigazione principale">
-    <div class="nav-inner">
-      <a href="#italia">ITALIA</a>
-      <a href="#mondo">MONDO</a>
-      <a href="#economia">ECONOMIA E BORSA</a>
-      <a href="#sport">SPORT</a>
+    <div class="container">
+      <a href="#home">Home</a>
+      <a href="#italia">Italia</a>
+      <a href="#mondo">Mondo</a>
+      <a href="#economia">Economia e Borsa</a>
+      <a href="#sport">Sport</a>
     </div>
   </nav>
 
-  <main>
-    <div class="notice">
-      <strong>Anteprima del sito:</strong> i contenuti presenti sono esempi
-      grafici, non notizie reali. La raccolta e la pubblicazione automatica
-      verranno configurate in un passaggio successivo.
+  <div class="ticker">
+    <div class="container">
+      <span class="ticker-label">IN EVIDENZA</span>
+      <span>Le notizie, spiegate con chiarezza.</span>
+    </div>
+  </div>
+
+  <main class="container" id="home">
+    <section class="intro">
+      <div class="eyebrow">Informazione · Approfondimento · Attualità</div>
+      <h1>Capire i fatti. Restare aggiornati.</h1>
+      <p>
+        Uno spazio digitale dedicato alle notizie dall'Italia e dal mondo,
+        all'economia e allo sport.
+      </p>
+    </section>
+
+    <div class="demo-notice">
+      <strong>Anteprima del progetto:</strong>
+      i contenuti di questa pagina sono dimostrativi, non sono notizie attuali.
+      Saranno sostituiti con articoli verificati prima del lancio editoriale.
     </div>
 
-    <div class="lead">
-      <article class="lead-main">
+    <section class="hero-grid" aria-label="Contenuti in evidenza">
+      <article class="hero-card">
         <div class="hero-art">
-          Il mondo<br>in primo piano
-          <span>INFORMAZIONE A 360°</span>
-        </div>
-        <div class="lead-copy">
-          <span class="section-label">La nostra missione</span>
-          <h2>Le notizie importanti, senza perdere di vista i fatti.</h2>
-          <p>
-            Uno spazio dedicato alla cronaca, all'attualità, all'economia
-            e allo sport in Italia e nel mondo.
-          </p>
+          <div>
+            <span class="category-label">Il progetto</span>
+            <h2>Un nuovo punto di vista sull'attualità</h2>
+            <p>
+              Notizie, contesto e fonti: l'obiettivo di Punto Attuale
+              è aiutarti a orientarti tra i fatti.
+            </p>
+          </div>
         </div>
       </article>
 
-      <div class="lead-side">
-        <article class="side-item">
-          <span class="tag">Italia</span>
-          <h3>Le notizie italiane, vicino ai cittadini</h3>
-          <p>Spazio dedicato a politica, società e cronaca.</p>
-        </article>
-        <article class="side-item">
-          <span class="tag">Economia</span>
-          <h3>Mercati e finanza spiegati in modo semplice</h3>
-          <p>Analisi, dati e aggiornamenti da fonti verificabili.</p>
-        </article>
-        <article class="side-item">
-          <span class="tag">Sport</span>
-          <h3>Risultati, protagonisti e grandi competizioni</h3>
-          <p>Il mondo dello sport italiano e internazionale.</p>
-        </article>
-      </div>
-    </div>
+      <aside class="side-card">
+        <div class="side-content">
+          <h2>Da seguire</h2>
 
-    <section class="section" id="italia">
+          <article class="side-item">
+            <span class="eyebrow">Italia</span>
+            <h3>Le notizie del Paese, oltre i titoli</h3>
+            <p>Contenuto dimostrativo: sarà sostituito con articoli verificati.</p>
+          </article>
+
+          <article class="side-item">
+            <span class="eyebrow">Economia</span>
+            <h3>Mercati e numeri spiegati in modo semplice</h3>
+            <p>Contenuto dimostrativo: dati e fonti saranno indicati negli articoli.</p>
+          </article>
+
+          <article class="side-item">
+            <span class="eyebrow">Sport</span>
+            <h3>Risultati, protagonisti e storie sportive</h3>
+            <p>Contenuto dimostrativo: gli aggiornamenti saranno verificati.</p>
+          </article>
+        </div>
+      </aside>
+    </section>
+
+    <section class="category" id="italia">
       <div class="section-heading">
         <h2>Italia</h2>
-        <span>Cronaca e attualità</span>
+        <span>Notizie nazionali</span>
       </div>
+
       <div class="cards">
-        <article class="card">
-          <div class="placeholder">Spazio immagine</div>
-          <span class="tag">Cronaca</span>
-          <h3>Qui appariranno le principali notizie italiane</h3>
-          <p>Gli articoli reali saranno inseriti dopo aver collegato le fonti.</p>
+        <article class="category-card">
+          <div class="card-icon">IT</div>
+          <h3>Politica e istituzioni</h3>
+          <p>Decisioni pubbliche e provvedimenti spiegati in modo accessibile.</p>
         </article>
-        <article class="card">
-          <div class="placeholder">Spazio immagine</div>
-          <span class="tag">Politica</span>
-          <h3>Approfondimenti sui temi di interesse pubblico</h3>
-          <p>Informazioni da verificare prima della pubblicazione.</p>
+
+        <article class="category-card">
+          <div class="card-icon">●</div>
+          <h3>Cronaca e società</h3>
+          <p>Fatti locali e nazionali trattati con attenzione, contesto e rispetto.</p>
         </article>
-        <article class="card">
-          <div class="placeholder">Spazio immagine</div>
-          <span class="tag">Società</span>
-          <h3>Storie e cambiamenti che riguardano il Paese</h3>
-          <p>Uno spazio per fatti, dati e testimonianze attendibili.</p>
+
+        <article class="category-card">
+          <div class="card-icon">+</div>
+          <h3>Attualità</h3>
+          <p>I temi che incidono sulla vita quotidiana e meritano spiegazioni chiare.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="mondo">
+    <section class="category" id="mondo">
       <div class="section-heading">
         <h2>Mondo</h2>
-        <span>Italia e scenari internazionali</span>
+        <span>Notizie internazionali</span>
       </div>
+
       <div class="cards">
-        <article class="card">
-          <span class="tag">Esteri</span>
-          <h3>Le notizie dall'estero</h3>
-          <p>Selezione di notizie internazionali da fonti attendibili.</p>
+        <article class="category-card">
+          <div class="card-icon">◎</div>
+          <h3>Europa</h3>
+          <p>Politica, istituzioni e avvenimenti europei raccontati con fonti riconoscibili.</p>
         </article>
-        <article class="card">
-          <span class="tag">Scienza</span>
-          <h3>Innovazione e nuove scoperte</h3>
-          <p>Le novità scientifiche spiegate con un linguaggio accessibile.</p>
+
+        <article class="category-card">
+          <div class="card-icon">↗</div>
+          <h3>Dal mondo</h3>
+          <p>Gli avvenimenti internazionali e il contesto per comprenderli.</p>
         </article>
-        <article class="card">
-          <span class="tag">Tecnologia</span>
-          <h3>Il mondo digitale che cambia</h3>
-          <p>Approfondimenti su tecnologia e trasformazione digitale.</p>
+
+        <article class="category-card">
+          <div class="card-icon">✦</div>
+          <h3>Scienza e società</h3>
+          <p>Scoperte e cambiamenti spiegati con attenzione alle prove e alle fonti.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="economia">
+    <section class="category" id="economia">
       <div class="section-heading">
         <h2>Economia e Borsa</h2>
-        <span>Mercati e imprese</span>
+        <span>Numeri e mercati</span>
       </div>
-      <div class="market">
-        <div>
-          <strong>Mercati finanziari</strong>
-          <small>Le quotazioni verranno collegate in seguito.</small>
-        </div>
-        <div>
-          <strong>Analisi economiche</strong>
-          <small>Dati, contesto e fonti verificabili.</small>
-        </div>
+
+      <div class="cards">
+        <article class="category-card">
+          <div class="card-icon">€</div>
+          <h3>Economia</h3>
+          <p>Prezzi, lavoro e imprese spiegati con dati e riferimenti verificabili.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">↗</div>
+          <h3>Mercati finanziari</h3>
+          <p>Quotazioni e andamento dei mercati con data e ora dei dati, quando disponibili.</p>
+        </article>
+
+        <article class="category-card">
+          <div class="card-icon">i</div>
+          <h3>Guide e spiegazioni</h3>
+          <p>Concetti economici raccontati in modo comprensibile, senza promesse di rendimento.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="sport">
+    <section class="category" id="sport">
       <div class="section-heading">
         <h2>Sport</h2>
         <span>Risultati e protagonisti</span>
       </div>
+
       <div class="cards">
-        <article class="card">
-          <span class="tag">Calcio</span>
-          <h3>Campionati e competizioni</h3>
-          <p>Risultati, calendario e notizie da fonti sportive affidabili.</p>
+        <article class="category-card">
+          <div class="card-icon">⚽</div>
+          <h3>Calcio</h3>
+          <p>Partite, risultati e protagonisti: gli aggiornamenti saranno controllati.</p>
         </article>
-        <article class="card">
-          <span class="tag">Motori</span>
-          <h3>Velocità e competizioni internazionali</h3>
-          <p>Aggiornamenti dal mondo dei motori.</p>
+
+        <article class="category-card">
+          <div class="card-icon">🏁</div>
+          <h3>Motori</h3>
+          <p>Gare, classifiche e notizie dal mondo dei motori.</p>
         </article>
-        <article class="card">
-          <span class="tag">Altri sport</span>
-          <h3>Le storie oltre il campo</h3>
-          <p>Atleti, eventi e risultati delle diverse discipline.</p>
+
+        <article class="category-card">
+          <div class="card-icon">★</div>
+          <h3>Altri sport</h3>
+          <p>Risultati e storie sportive oltre i campionati più seguiti.</p>
         </article>
       </div>
+    </section>
+
+    <section class="editorial" id="fonti">
+      <h2>Le fonti prima di tutto</h2>
+      <p>
+        Punto Attuale punta a distinguere fatti verificati, analisi e contenuti
+        preparati con il supporto dell'intelligenza artificiale. Ogni articolo
+        pubblicato dovrà essere controllato e accompagnato dalle sue fonti.
+      </p>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <strong>GIORNALE DIGITALE</strong>
-      <p>Progetto editoriale in fase di sviluppo.</p>
-      <p>Contatti, privacy e informazioni editoriali saranno aggiunti
-      prima della pubblicazione definitiva.</p>
-      <small>© Giornale Digitale — nome provvisorio</small>
+    <div class="container footer-row">
+      <div>
+        <div class="footer-brand">PUNTO ATTUALE</div>
+        <p>L'informazione sempre aggiornata</p>
+      </div>
+
+      <div>
+        <p>Italia · Mondo · Economia e Borsa · Sport</p>
+        <p>Progetto in fase di sviluppo. I contenuti dimostrativi non sono notizie reali.</p>
+      </div>
     </div>
   </footer>
 </body>
