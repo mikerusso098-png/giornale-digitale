@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101827">
-
-  <meta name="description" content="Punto Attuale: notizie dall'Italia e dal mondo, economia e borsa, sport, tecnologia, scienza, cultura, ambiente e viaggi.">
-
+  <meta name="description" content="Punto Attuale: notizie dall'Italia e dal mondo, economia, sport, tecnologia, scienza, cultura, ambiente e viaggi.">
   <title>Punto Attuale | L'informazione sempre aggiornata</title>
 
   <style>
@@ -43,7 +40,6 @@
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
     .container {
@@ -81,7 +77,7 @@
       display: flex;
       align-items: center;
       gap: 13px;
-      min-width: 0;
+      text-decoration: none;
     }
 
     .brand-icon {
@@ -117,8 +113,6 @@
       text-align: right;
     }
 
-    /* Menu con tutte le categorie visibili */
-
     nav {
       background: var(--navy);
       color: white;
@@ -138,9 +132,9 @@
       padding: 11px 12px;
       font-size: 13px;
       font-weight: bold;
+      text-decoration: none;
       border-radius: 6px;
       border-bottom: 2px solid transparent;
-      transition: background .2s ease;
     }
 
     nav a:hover,
@@ -204,14 +198,20 @@
       margin: 0;
     }
 
-    .demo-notice {
+    .live-status {
       padding: 12px 15px;
       margin-bottom: 22px;
-      background: #fff4d4;
-      border: 1px solid #f2dfa1;
+      background: #e2f8f5;
+      border: 1px solid #b9e9e4;
       border-radius: 10px;
-      color: #715a20;
+      color: #075e58;
       font-size: 13px;
+    }
+
+    .live-status.error {
+      background: #fff4d4;
+      border-color: #f2dfa1;
+      color: #715a20;
     }
 
     .hero-grid {
@@ -222,7 +222,7 @@
 
     .hero-card,
     .side-card,
-    .category-card {
+    .news-card {
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -237,17 +237,8 @@
       align-items: flex-end;
       color: white;
       background:
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(16,184,173,.65),
-          transparent 25%
-        ),
-        linear-gradient(
-          135deg,
-          #101827,
-          #1c3e54 65%,
-          #087f7a
-        );
+        radial-gradient(circle at 80% 20%, rgba(16,184,173,.65), transparent 25%),
+        linear-gradient(135deg, #101827, #1c3e54 65%, #087f7a);
     }
 
     .hero-art h2 {
@@ -287,8 +278,20 @@
       line-height: 1.4;
     }
 
+    .side-item a,
+    .source-link {
+      color: var(--teal-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .side-item a:hover,
+    .source-link:hover {
+      text-decoration: underline;
+    }
+
     .side-item p {
-      margin: 0;
+      margin: 0 0 8px;
       color: var(--muted);
       font-size: 13px;
     }
@@ -328,38 +331,46 @@
       gap: 16px;
     }
 
-    .category-card {
-      padding: 21px;
-      transition: transform .2s ease, box-shadow .2s ease;
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+      padding: 20px;
     }
 
-    .category-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(16, 24, 39, .09);
+    .news-meta {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .4px;
     }
 
-    .card-icon {
-      display: grid;
-      place-items: center;
-      width: 44px;
-      height: 44px;
-      margin-bottom: 14px;
-      border-radius: 12px;
-      background: #e2f8f5;
-      color: var(--teal-dark);
-      font-size: 20px;
-      font-weight: 900;
+    .news-card h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
     }
 
-    .category-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .category-card p {
+    .news-card p {
       margin: 0;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .news-card .source-link {
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    .empty-message {
+      grid-column: 1 / -1;
+      padding: 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--muted);
     }
 
     .editorial {
@@ -482,6 +493,7 @@
 
       .section-heading span {
         font-size: 10px;
+        text-align: right;
       }
     }
 
@@ -489,17 +501,11 @@
       html {
         scroll-behavior: auto;
       }
-
-      .category-card {
-        transition: none;
-      }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Barra superiore -->
   <div class="topbar">
     <div class="container">
       <span>Una lettura chiara dei fatti</span>
@@ -507,45 +513,24 @@
     </div>
   </div>
 
-  <!-- Marchio -->
   <header>
     <div class="container brand-row">
       <a class="brand" href="#home" aria-label="Punto Attuale - Homepage">
-
-        <svg
-          class="brand-icon"
-          viewBox="0 0 64 64"
-          aria-hidden="true"
-        >
-          <path
-            d="M32 59C26 49 9 33 9 22a23 23 0 0 1 46 0C55 33 38 49 32 59Z"
-            fill="#101827"
-          />
+        <svg class="brand-icon" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 59C26 49 9 33 9 22a23 23 0 0 1 46 0C55 33 38 49 32 59Z" fill="#101827"/>
           <circle cx="32" cy="22" r="13" fill="#10b8ad"/>
           <circle cx="32" cy="22" r="5" fill="#101827"/>
-          <path
-            d="M44 10a17 17 0 0 1 6 12M49 5a24 24 0 0 1 9 17"
-            fill="none"
-            stroke="#10b8ad"
-            stroke-width="3.5"
-            stroke-linecap="round"
-          />
+          <path d="M44 10a17 17 0 0 1 6 12M49 5a24 24 0 0 1 9 17" fill="none" stroke="#10b8ad" stroke-width="3.5" stroke-linecap="round"/>
         </svg>
-
         <div>
           <p class="brand-name">PUNTO <span>ATTUALE</span></p>
           <p class="tagline">L'informazione sempre aggiornata</p>
         </div>
       </a>
-
-      <div class="brand-note">
-        IL TUO PUNTO<br>
-        DI VISTA SUI FATTI
-      </div>
+      <div class="brand-note">IL TUO PUNTO<br>DI VISTA SUI FATTI</div>
     </div>
   </header>
 
-  <!-- Menu con tutte le categorie -->
   <nav aria-label="Navigazione principale">
     <div class="container">
       <a href="#home">Home</a>
@@ -561,7 +546,6 @@
     </div>
   </nav>
 
-  <!-- Fascia in evidenza -->
   <div class="ticker">
     <div class="container">
       <span class="ticker-label">IN EVIDENZA</span>
@@ -570,623 +554,379 @@
   </div>
 
   <main class="container" id="home">
-
-    <!-- Introduzione -->
     <section class="intro">
-      <div class="eyebrow">
-        Informazione · Approfondimento · Attualità
-      </div>
-
+      <div class="eyebrow">Informazione · Approfondimento · Attualità</div>
       <h1>Capire i fatti. Restare aggiornati.</h1>
-
       <p>
         Uno spazio digitale dedicato alle notizie dall'Italia e dal mondo,
         all'economia, allo sport, alla tecnologia, alla scienza e alla cultura.
+        Consulta sempre le fonti originali per leggere tutti i dettagli.
       </p>
     </section>
 
-    <div class="demo-notice">
-      <strong>Anteprima del progetto:</strong>
-      i contenuti di questa pagina sono dimostrativi, non sono notizie attuali.
-      Saranno sostituiti con articoli verificati prima del lancio editoriale.
+    <div id="rss-live-status" class="live-status" role="status" aria-live="polite">
+      Collegamento alle notizie in corso…
     </div>
 
-    <!-- Contenuto principale -->
     <section class="hero-grid" aria-label="Contenuti in evidenza">
-
       <article class="hero-card">
         <div class="hero-art">
           <div>
-            <span class="category-label">Il progetto</span>
-
-            <h2>Un nuovo punto di vista sull'attualità</h2>
-
-            <p>
-              Notizie, contesto e fonti: l'obiettivo di Punto Attuale
-              è aiutarti a orientarti tra i fatti.
-            </p>
+            <span class="category-label">Punto Attuale</span>
+            <h2>Le notizie, con le fonti in primo piano.</h2>
+            <p>Una panoramica dell'attualità organizzata in nove categorie.</p>
           </div>
         </div>
       </article>
 
       <aside class="side-card">
-        <div class="side-content">
-          <h2>Da seguire</h2>
-
-          <article class="side-item">
-            <span class="eyebrow">Italia</span>
-            <h3>Le notizie del Paese, oltre i titoli</h3>
-            <p>Contenuto dimostrativo, in attesa degli articoli verificati.</p>
-          </article>
-
-          <article class="side-item">
-            <span class="eyebrow">Economia</span>
-            <h3>Mercati e numeri spiegati in modo semplice</h3>
-            <p>Contenuto dimostrativo, in attesa di dati e fonti.</p>
-          </article>
-
-          <article class="side-item">
-            <span class="eyebrow">Tecnologia</span>
-            <h3>Innovazione e intelligenza artificiale</h3>
-            <p>Contenuto dimostrativo, in attesa degli aggiornamenti.</p>
-          </article>
+        <div class="side-content" id="side-content">
+          <h2>Ultime notizie</h2>
+          <p>Le notizie più recenti verranno caricate qui.</p>
         </div>
       </aside>
-
     </section>
 
-    <!-- ITALIA -->
     <section class="category" id="italia">
-      <div class="section-heading">
-        <h2>Italia</h2>
-        <span>Notizie nazionali</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">IT</div>
-          <h3>Politica e istituzioni</h3>
-          <p>Decisioni pubbliche e provvedimenti spiegati in modo accessibile.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">●</div>
-          <h3>Cronaca e società</h3>
-          <p>Fatti locali e nazionali trattati con attenzione, contesto e rispetto.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">+</div>
-          <h3>Attualità italiana</h3>
-          <p>Temi che incidono sulla vita quotidiana dei cittadini.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Italia</h2><span>Notizie nazionali</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- MONDO -->
     <section class="category" id="mondo">
-      <div class="section-heading">
-        <h2>Mondo</h2>
-        <span>Notizie internazionali</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">◎</div>
-          <h3>Europa</h3>
-          <p>Politica, istituzioni e avvenimenti europei.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">↗</div>
-          <h3>Dal mondo</h3>
-          <p>Gli avvenimenti internazionali e il contesto per comprenderli.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">◈</div>
-          <h3>Geopolitica</h3>
-          <p>Relazioni internazionali, diplomazia e scenari globali.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Mondo</h2><span>Notizie internazionali</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- ECONOMIA E BORSA -->
     <section class="category" id="economia">
-      <div class="section-heading">
-        <h2>Economia e Borsa</h2>
-        <span>Numeri e mercati</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">€</div>
-          <h3>Economia</h3>
-          <p>Prezzi, lavoro, imprese e andamento dell'economia.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">↗</div>
-          <h3>Mercati finanziari</h3>
-          <p>Quotazioni e mercati, con data e ora dei dati quando disponibili.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">i</div>
-          <h3>Risparmio e finanza</h3>
-          <p>Guide per comprendere concetti economici e finanziari.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Economia e Borsa</h2><span>Numeri e mercati</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- SPORT -->
     <section class="category" id="sport">
-      <div class="section-heading">
-        <h2>Sport</h2>
-        <span>Risultati e protagonisti</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">⚽</div>
-          <h3>Calcio</h3>
-          <p>Campionati, risultati, squadre e protagonisti.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">🏁</div>
-          <h3>Motori</h3>
-          <p>Formula 1, MotoGP, gare e classifiche.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">★</div>
-          <h3>Altri sport</h3>
-          <p>Tennis, basket, pallavolo e altre discipline.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Sport</h2><span>Risultati e protagonisti</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- TECNOLOGIA -->
     <section class="category" id="tecnologia">
-      <div class="section-heading">
-        <h2>Tecnologia</h2>
-        <span>Innovazione digitale</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">AI</div>
-          <h3>Intelligenza artificiale</h3>
-          <p>Nuovi strumenti, applicazioni e sviluppi dell'AI.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">⌘</div>
-          <h3>Digitale e dispositivi</h3>
-          <p>Smartphone, computer, app e prodotti tecnologici.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">◇</div>
-          <h3>Cybersecurity</h3>
-          <p>Privacy, sicurezza informatica e protezione dei dati.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Tecnologia</h2><span>Innovazione digitale</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- SALUTE E SCIENZA -->
     <section class="category" id="scienza">
-      <div class="section-heading">
-        <h2>Salute e Scienza</h2>
-        <span>Ricerca e conoscenza</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">+</div>
-          <h3>Salute pubblica</h3>
-          <p>Informazioni sanitarie basate su fonti autorevoli e verificabili.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">⚗</div>
-          <h3>Ricerca scientifica</h3>
-          <p>Scoperte, studi e nuove conoscenze scientifiche.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">✦</div>
-          <h3>Spazio e universo</h3>
-          <p>Astronomia, missioni spaziali e ricerca sull'universo.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Salute e Scienza</h2><span>Ricerca e conoscenza</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- SPETTACOLO E CULTURA -->
     <section class="category" id="cultura">
-      <div class="section-heading">
-        <h2>Spettacolo e Cultura</h2>
-        <span>Arte e intrattenimento</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">▶</div>
-          <h3>Cinema e serie TV</h3>
-          <p>Uscite, recensioni, festival e notizie dal cinema.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">♫</div>
-          <h3>Musica e spettacolo</h3>
-          <p>Concerti, artisti, televisione ed eventi.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">▤</div>
-          <h3>Libri e cultura</h3>
-          <p>Letteratura, arte, musei, mostre e patrimonio culturale.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Spettacolo e Cultura</h2><span>Arte e intrattenimento</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- AMBIENTE E METEO -->
     <section class="category" id="ambiente">
-      <div class="section-heading">
-        <h2>Ambiente e Meteo</h2>
-        <span>Clima e territorio</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">☼</div>
-          <h3>Meteo</h3>
-          <p>Previsioni e allerte da fonti meteorologiche affidabili.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">♧</div>
-          <h3>Ambiente e clima</h3>
-          <p>Cambiamenti climatici, biodiversità e tutela ambientale.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">⚡</div>
-          <h3>Energia</h3>
-          <p>Fonti energetiche, innovazione e sostenibilità.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Ambiente e Meteo</h2><span>Clima e territorio</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- VIAGGI E TERRITORIO -->
     <section class="category" id="viaggi">
-      <div class="section-heading">
-        <h2>Viaggi e Territorio</h2>
-        <span>Luoghi da scoprire</span>
-      </div>
-
-      <div class="cards">
-        <article class="category-card">
-          <div class="card-icon">⌖</div>
-          <h3>Turismo</h3>
-          <p>Destinazioni, itinerari e consigli per viaggiare.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">⌂</div>
-          <h3>Notizie locali</h3>
-          <p>Comuni, regioni, servizi e iniziative del territorio.</p>
-        </article>
-
-        <article class="category-card">
-          <div class="card-icon">↔</div>
-          <h3>Trasporti e mobilità</h3>
-          <p>Treni, strade, aeroporti e novità sulla mobilità.</p>
-        </article>
-      </div>
+      <div class="section-heading"><h2>Viaggi e Territorio</h2><span>Luoghi da scoprire</span></div>
+      <div class="cards" aria-live="polite"><div class="empty-message">Caricamento notizie…</div></div>
     </section>
 
-    <!-- METODO EDITORIALE -->
-    <section class="editorial" id="fonti">
+    <section class="editorial">
       <h2>Le fonti prima di tutto</h2>
       <p>
-        Punto Attuale punta a distinguere fatti verificati, analisi e contenuti
-        preparati con il supporto dell'intelligenza artificiale. Ogni articolo
-        pubblicato dovrà essere controllato e accompagnato dalle sue fonti.
-        Questa pagina è una struttura iniziale: non contiene ancora un sistema
-        automatico di raccolta o pubblicazione delle notizie.
+        Punto Attuale raccoglie titoli e descrizioni da feed esterni. I contenuti
+        e i collegamenti rimandano alle fonti originali: verifica sempre data,
+        contesto e aggiornamenti direttamente sul sito della testata. La presenza
+        di una notizia nel feed non equivale a una verifica editoriale indipendente.
       </p>
     </section>
-
   </main>
 
-  <!-- Piè di pagina -->
   <footer>
     <div class="container footer-row">
       <div>
         <div class="footer-brand">PUNTO ATTUALE</div>
         <p>L'informazione sempre aggiornata</p>
       </div>
-
       <div>
         <p>Italia · Mondo · Economia e Borsa · Sport</p>
         <p>Tecnologia · Salute e Scienza · Spettacolo e Cultura</p>
         <p>Ambiente e Meteo · Viaggi e Territorio</p>
-        <p>Progetto in fase di sviluppo. I contenuti dimostrativi non sono notizie reali.</p>
+        <p>Notizie da feed esterni. Consulta sempre la fonte originale.</p>
       </div>
     </div>
   </footer>
 
-<style>
-  .live-news-card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #e3e8ee;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(16, 24, 39, .05);
-    min-width: 0;
-  }
+  <script>
+    (() => {
+      "use strict";
 
-  .live-news-card h3 {
-    margin: 0;
-    font-size: 17px;
-    line-height: 1.4;
-  }
+      const API_URL =
+        "https://punto-attuale-rss.mikerusso098.workers.dev/api/news";
 
-  .live-news-card p {
-    margin: 0;
-    color: #657184;
-    font-size: 13px;
-  }
+      const CATEGORY_IDS = [
+        "italia",
+        "mondo",
+        "economia",
+        "sport",
+        "tecnologia",
+        "scienza",
+        "cultura",
+        "ambiente",
+        "viaggi"
+      ];
 
-  .live-news-card a {
-    color: #087f7a;
-    font-weight: bold;
-    margin-top: auto;
-  }
+      const CATEGORY_NAMES = {
+        italia: "Italia",
+        mondo: "Mondo",
+        economia: "Economia e Borsa",
+        sport: "Sport",
+        tecnologia: "Tecnologia",
+        scienza: "Salute e Scienza",
+        cultura: "Spettacolo e Cultura",
+        ambiente: "Ambiente e Meteo",
+        viaggi: "Viaggi e Territorio"
+      };
 
-  .live-news-meta {
-    color: #657184;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .4px;
-  }
+      const statusEl = document.getElementById("rss-live-status");
+      const sideEl = document.getElementById("side-content");
 
-  #rss-live-status {
-    padding: 12px 15px;
-    margin-bottom: 22px;
-    border-radius: 10px;
-    background: #e2f8f5;
-    color: #075e58;
-    font-size: 13px;
-  }
+      function formatDate(value) {
+        if (!value) return "Data non disponibile";
 
-  .live-news-empty {
-    grid-column: 1 / -1;
-    padding: 18px;
-    background: white;
-    border-radius: 12px;
-  }
-</style>
+        const date = new Date(value);
 
-<script>
-(async function connectPuntoAttuale() {
-  const API =
-    "https://punto-attuale-rss.mikerusso098.workers.dev/api/news";
+        if (Number.isNaN(date.getTime())) {
+          return "Data non disponibile";
+        }
 
-  const categoryIds = [
-    "italia",
-    "mondo",
-    "economia",
-    "sport",
-    "tecnologia",
-    "scienza",
-    "cultura",
-    "ambiente",
-    "viaggi"
-  ];
-
-  const names = {
-    italia: "Italia",
-    mondo: "Mondo",
-    economia: "Economia e Borsa",
-    sport: "Sport",
-    tecnologia: "Tecnologia",
-    scienza: "Salute e Scienza",
-    cultura: "Spettacolo e Cultura",
-    ambiente: "Ambiente e Meteo",
-    viaggi: "Viaggi e Territorio"
-  };
-
-  const status = document.querySelector(".demo-notice");
-
-  if (status) {
-    status.id = "rss-live-status";
-    status.textContent = "Collegamento alle notizie in corso…";
-  }
-
-  function formatDate(value) {
-    if (!value) return "Data non disponibile";
-
-    const date = new Date(value);
-
-    if (Number.isNaN(date.getTime())) {
-      return "Data non disponibile";
-    }
-
-    return new Intl.DateTimeFormat("it-IT", {
-      dateStyle: "medium",
-      timeStyle: "short"
-    }).format(date);
-  }
-
-  function makeCard(article) {
-    const card = document.createElement("article");
-    card.className = "live-news-card";
-
-    const meta = document.createElement("div");
-    meta.className = "live-news-meta";
-    meta.textContent =
-      (article.source || "Fonte") + " · " +
-      formatDate(article.publishedAt);
-
-    const title = document.createElement("h3");
-    title.textContent = article.title || "Notizia";
-
-    const description = document.createElement("p");
-    description.textContent =
-      article.description || "Leggi la notizia originale alla fonte.";
-
-    const link = document.createElement("a");
-    link.href = article.url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = "Leggi la fonte ↗";
-
-    card.append(meta, title, description, link);
-    return card;
-  }
-
-  function showMessage(container, message) {
-    container.replaceChildren();
-
-    const item = document.createElement("div");
-    item.className = "live-news-empty";
-    item.textContent = message;
-
-    container.appendChild(item);
-  }
-
-  try {
-    const response = await fetch(API, {
-      method: "GET",
-      cache: "no-store"
-    });
-
-    if (!response.ok) {
-      throw new Error("API non disponibile (HTTP " + response.status + ")");
-    }
-
-    const data = await response.json();
-
-    if (!data.ok || !data.categories) {
-      throw new Error("Formato dei dati non riconosciuto");
-    }
-
-    let total = 0;
-
-    for (const id of categoryIds) {
-      const section = document.getElementById(id);
-      const category = data.categories[id];
-
-      if (!section) continue;
-
-      const container = section.querySelector(".cards");
-      if (!container) continue;
-
-      const articles = category && Array.isArray(category.articles)
-        ? category.articles
-        : [];
-
-      container.replaceChildren();
-
-      if (articles.length === 0) {
-        showMessage(
-          container,
-          "Nessun articolo disponibile al momento per questa categoria."
-        );
-        continue;
+        return new Intl.DateTimeFormat("it-IT", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        }).format(date);
       }
 
-      articles.forEach(article => {
-        container.appendChild(makeCard(article));
-      });
+      function safeUrl(value) {
+        try {
+          const url = new URL(value);
 
-      total += articles.length;
+          if (url.protocol === "https:" || url.protocol === "http:") {
+            return url.href;
+          }
 
-      const heading = section.querySelector(".section-heading span");
-
-      if (heading) {
-        heading.textContent = articles.length + " notizie disponibili";
+          return null;
+        } catch (_) {
+          return null;
+        }
       }
-    }
 
-    // Aggiorna anche il riquadro "Da seguire".
-    const side = document.querySelector(".side-content");
+      function createArticleCard(article) {
+        const card = document.createElement("article");
+        card.className = "news-card";
 
-    if (side) {
-      const latest = categoryIds
-        .flatMap(id => {
-          const category = data.categories[id];
-          return category && Array.isArray(category.articles)
-            ? category.articles
-            : [];
-        })
-        .sort((a, b) =>
-          new Date(b.publishedAt) - new Date(a.publishedAt)
-        )
-        .slice(0, 3);
-
-      side.replaceChildren();
-
-      const heading = document.createElement("h2");
-      heading.textContent = "Ultime notizie";
-      side.appendChild(heading);
-
-      latest.forEach(article => {
-        const item = document.createElement("article");
-        item.className = "side-item";
-
-        const label = document.createElement("span");
-        label.className = "eyebrow";
-        label.textContent = names[article.category] || "Attualità";
+        const meta = document.createElement("div");
+        meta.className = "news-meta";
+        meta.textContent =
+          (article.source || "Fonte esterna") +
+          " · " +
+          formatDate(article.publishedAt);
 
         const title = document.createElement("h3");
-        title.textContent = article.title;
+        title.textContent = article.title || "Titolo non disponibile";
 
-        const link = document.createElement("a");
-        link.href = article.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "Leggi la fonte ↗";
+        const description = document.createElement("p");
+        description.textContent =
+          article.description ||
+          "Apri la fonte originale per leggere tutti i dettagli.";
 
-        item.append(label, title, link);
-        side.appendChild(item);
-      });
-    }
+        card.append(meta, title, description);
 
-    if (status) {
-      status.textContent =
-        "Notizie collegate correttamente: " + total +
-        " articoli caricati. Le notizie provengono da feed esterni; " +
-        "consulta le fonti originali per i dettagli.";
-    }
+        const href = safeUrl(article.url);
 
-    // Rimuove la vecchia dicitura dimostrativa nel piè di pagina.
-    document.querySelectorAll("footer p").forEach(paragraph => {
-      if (paragraph.textContent.includes("Progetto in fase di sviluppo")) {
-        paragraph.textContent =
-          "Notizie da fonti esterne. Consulta sempre la fonte originale.";
+        if (href) {
+          const link = document.createElement("a");
+          link.className = "source-link";
+          link.href = href;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "Leggi la fonte ↗";
+          card.appendChild(link);
+        } else {
+          const note = document.createElement("p");
+          note.textContent = "Link alla fonte non disponibile.";
+          card.appendChild(note);
+        }
+
+        return card;
       }
-    });
 
-  } catch (error) {
-    console.error("Errore nel collegamento RSS:", error);
+      function showEmpty(container, message) {
+        container.replaceChildren();
 
-    if (status) {
-      status.textContent =
-        "Impossibile caricare le notizie. Riprova più tardi. " +
-        "Dettaglio: " + error.message;
-      status.style.background = "#fff4d4";
-      status.style.color = "#715a20";
-    }
-  }
-})();
-</script>
+        const item = document.createElement("div");
+        item.className = "empty-message";
+        item.textContent = message;
 
+        container.appendChild(item);
+      }
+
+      function renderSidebar(articles) {
+        sideEl.replaceChildren();
+
+        const heading = document.createElement("h2");
+        heading.textContent = "Ultime notizie";
+        sideEl.appendChild(heading);
+
+        const latest = [...articles]
+          .sort((a, b) => {
+            return (
+              new Date(b.publishedAt || 0) -
+              new Date(a.publishedAt || 0)
+            );
+          })
+          .slice(0, 3);
+
+        if (latest.length === 0) {
+          const message = document.createElement("p");
+          message.textContent = "Nessuna notizia recente disponibile.";
+          sideEl.appendChild(message);
+          return;
+        }
+
+        latest.forEach(article => {
+          const item = document.createElement("article");
+          item.className = "side-item";
+
+          const label = document.createElement("span");
+          label.className = "eyebrow";
+          label.textContent =
+            CATEGORY_NAMES[article.category] || "Attualità";
+
+          const title = document.createElement("h3");
+          title.textContent = article.title || "Notizia";
+
+          item.append(label, title);
+
+          const href = safeUrl(article.url);
+
+          if (href) {
+            const link = document.createElement("a");
+            link.href = href;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Leggi la fonte ↗";
+            item.appendChild(link);
+          }
+
+          sideEl.appendChild(item);
+        });
+      }
+
+      async function loadNews() {
+        try {
+          const response = await fetch(API_URL, {
+            method: "GET",
+            cache: "no-store"
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              `servizio non disponibile (HTTP ${response.status})`
+            );
+          }
+
+          const data = await response.json();
+
+          if (!data || data.ok !== true || !data.categories) {
+            throw new Error("formato dei dati non riconosciuto");
+          }
+
+          let total = 0;
+          const allArticles = [];
+
+          for (const id of CATEGORY_IDS) {
+            const section = document.getElementById(id);
+            const container =
+              section && section.querySelector(".cards");
+
+            const category = data.categories[id];
+
+            const articles =
+              category && Array.isArray(category.articles)
+                ? category.articles
+                : [];
+
+            if (!container) continue;
+
+            container.replaceChildren();
+
+            if (articles.length === 0) {
+              showEmpty(
+                container,
+                "Nessun articolo disponibile al momento per questa categoria."
+              );
+            } else {
+              articles.forEach(article => {
+                container.appendChild(createArticleCard(article));
+
+                allArticles.push({
+                  ...article,
+                  category: article.category || id
+                });
+              });
+
+              total += articles.length;
+            }
+
+            const countLabel =
+              section.querySelector(".section-heading span");
+
+            if (countLabel) {
+              countLabel.textContent =
+                `${articles.length} ` +
+                (articles.length === 1
+                  ? "notizia disponibile"
+                  : "notizie disponibili");
+            }
+          }
+
+          renderSidebar(allArticles);
+
+          statusEl.classList.remove("error");
+          statusEl.textContent =
+            `Notizie collegate correttamente: ${total} articoli caricati. ` +
+            "Le notizie provengono da feed esterni; consulta le fonti originali per i dettagli.";
+
+        } catch (error) {
+          console.error("Errore nel collegamento RSS:", error);
+
+          statusEl.classList.add("error");
+          statusEl.textContent =
+            "Impossibile caricare le notizie in questo momento. " +
+            error.message +
+            ". Riprova tra poco.";
+
+          CATEGORY_IDS.forEach(id => {
+            const section = document.getElementById(id);
+            const container =
+              section && section.querySelector(".cards");
+
+            if (container) {
+              showEmpty(
+                container,
+                "Le notizie non sono momentaneamente disponibili. Riprova più tardi."
+              );
+            }
+          });
+        }
+      }
+
+      loadNews();
+
+      // Aggiorna le notizie ogni dieci minuti.
+      window.setInterval(loadNews, 10 * 60 * 1000);
+    })();
+  </script>
 </body>
 </html>
