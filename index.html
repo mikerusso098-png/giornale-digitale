@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Notizie dall'Italia e dal mondo, economia, Borsa e sport. Una nuova idea di informazione digitale.">
+  <meta name="theme-color" content="#102a43">
+  <title>Giornale Digitale | Italia, Mondo, Economia e Sport</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #1769aa;
+      --red: #d93838;
+      --paper: #f4f6f8;
+      --ink: #192b3a;
+      --muted: #667788;
+      --line: #e0e6ec;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topline {
+      background: var(--navy);
+      color: white;
+      padding: 8px 5%;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background: white;
+      padding: 26px 5% 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--navy);
+    }
+
+    .brand h1 span { color: var(--red); }
+
+    .brand p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .edition {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    nav {
+      background: var(--navy);
+      color: white;
+      padding: 0 5%;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: block;
+      padding: 14px 0;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    nav a:hover { color: #ffb6b6; }
+
+    main {
+      max-width: 1200px;
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    .notice {
+      background: #fff5df;
+      border: 1px solid #f0dba9;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      color: #654c19;
+      font-size: 13px;
+    }
+
+    .section-label {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .lead {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .lead-main, .lead-side, .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .hero-art {
+      min-height: 240px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #102a43, #1769aa);
+      color: white;
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 5vw, 48px);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-art span {
+      display: block;
+      color: #cfe8ff;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 10px;
+    }
+
+    .lead-copy { padding: 24px; }
+
+    .lead-copy h2 {
+      margin: 10px 0;
+      font-family: Georgia, serif;
+      font-size: clamp(25px, 3vw, 36px);
+      line-height: 1.2;
+    }
+
+    .lead-copy p, .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .side-item {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .side-item:last-child { border-bottom: 0; }
+
+    .side-item h3 {
+      margin: 7px 0;
+      font-family: Georgia, serif;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .section {
+      margin: 38px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid var(--navy);
+      margin-bottom: 18px;
+      gap: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 26px;
+      margin: 0 0 10px;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card { padding: 20px; }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      line-height: 1.3;
+      margin: 10px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eaf2fa;
+      color: var(--blue);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .placeholder {
+      border: 1px dashed #b7c7d6;
+      background: #edf2f6;
+      border-radius: 7px;
+      padding: 18px;
+      color: #526779;
+      font-size: 12px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .market {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .market strong { display: block; font-size: 18px; }
+    .market small { color: var(--muted); }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 32px 5%;
+      margin-top: 50px;
+      font-size: 13px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: auto; }
+    footer p { color: #d3deea; }
+
+    @media (max-width: 720px) {
+      .lead { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .brand { align-items: flex-start; }
+      .edition { display: none; }
+      .nav-inner { gap: 18px; }
+      main { padding: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">INFORMAZIONE · APPROFONDIMENTO · ATTUALITÀ</div>
+
+  <header>
+    <div class="brand">
+      <div>
+        <h1>GIORNALE <span>DIGITALE</span></h1>
+        <p>Le notizie, spiegate con chiarezza.</p>
+      </div>
+      <div class="edition">EDIZIONE ONLINE<br>Italia e mondo</div>
+    </div>
+  </header>
+
+  <nav aria-label="Navigazione principale">
+    <div class="nav-inner">
+      <a href="#italia">ITALIA</a>
+      <a href="#mondo">MONDO</a>
+      <a href="#economia">ECONOMIA E BORSA</a>
+      <a href="#sport">SPORT</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="notice">
+      <strong>Anteprima del sito:</strong> i contenuti presenti sono esempi
+      grafici, non notizie reali. La raccolta e la pubblicazione automatica
+      verranno configurate in un passaggio successivo.
+    </div>
+
+    <div class="lead">
+      <article class="lead-main">
+        <div class="hero-art">
+          Il mondo<br>in primo piano
+          <span>INFORMAZIONE A 360°</span>
+        </div>
+        <div class="lead-copy">
+          <span class="section-label">La nostra missione</span>
+          <h2>Le notizie importanti, senza perdere di vista i fatti.</h2>
+          <p>
+            Uno spazio dedicato alla cronaca, all'attualità, all'economia
+            e allo sport in Italia e nel mondo.
+          </p>
+        </div>
+      </article>
+
+      <div class="lead-side">
+        <article class="side-item">
+          <span class="tag">Italia</span>
+          <h3>Le notizie italiane, vicino ai cittadini</h3>
+          <p>Spazio dedicato a politica, società e cronaca.</p>
+        </article>
+        <article class="side-item">
+          <span class="tag">Economia</span>
+          <h3>Mercati e finanza spiegati in modo semplice</h3>
+          <p>Analisi, dati e aggiornamenti da fonti verificabili.</p>
+        </article>
+        <article class="side-item">
+          <span class="tag">Sport</span>
+          <h3>Risultati, protagonisti e grandi competizioni</h3>
+          <p>Il mondo dello sport italiano e internazionale.</p>
+        </article>
+      </div>
+    </div>
+
+    <section class="section" id="italia">
+      <div class="section-heading">
+        <h2>Italia</h2>
+        <span>Cronaca e attualità</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="placeholder">Spazio immagine</div>
+          <span class="tag">Cronaca</span>
+          <h3>Qui appariranno le principali notizie italiane</h3>
+          <p>Gli articoli reali saranno inseriti dopo aver collegato le fonti.</p>
+        </article>
+        <article class="card">
+          <div class="placeholder">Spazio immagine</div>
+          <span class="tag">Politica</span>
+          <h3>Approfondimenti sui temi di interesse pubblico</h3>
+          <p>Informazioni da verificare prima della pubblicazione.</p>
+        </article>
+        <article class="card">
+          <div class="placeholder">Spazio immagine</div>
+          <span class="tag">Società</span>
+          <h3>Storie e cambiamenti che riguardano il Paese</h3>
+          <p>Uno spazio per fatti, dati e testimonianze attendibili.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="mondo">
+      <div class="section-heading">
+        <h2>Mondo</h2>
+        <span>Italia e scenari internazionali</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">Esteri</span>
+          <h3>Le notizie dall'estero</h3>
+          <p>Selezione di notizie internazionali da fonti attendibili.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Scienza</span>
+          <h3>Innovazione e nuove scoperte</h3>
+          <p>Le novità scientifiche spiegate con un linguaggio accessibile.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Tecnologia</span>
+          <h3>Il mondo digitale che cambia</h3>
+          <p>Approfondimenti su tecnologia e trasformazione digitale.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="economia">
+      <div class="section-heading">
+        <h2>Economia e Borsa</h2>
+        <span>Mercati e imprese</span>
+      </div>
+      <div class="market">
+        <div>
+          <strong>Mercati finanziari</strong>
+          <small>Le quotazioni verranno collegate in seguito.</small>
+        </div>
+        <div>
+          <strong>Analisi economiche</strong>
+          <small>Dati, contesto e fonti verificabili.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sport">
+      <div class="section-heading">
+        <h2>Sport</h2>
+        <span>Risultati e protagonisti</span>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">Calcio</span>
+          <h3>Campionati e competizioni</h3>
+          <p>Risultati, calendario e notizie da fonti sportive affidabili.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Motori</span>
+          <h3>Velocità e competizioni internazionali</h3>
+          <p>Aggiornamenti dal mondo dei motori.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Altri sport</span>
+          <h3>Le storie oltre il campo</h3>
+          <p>Atleti, eventi e risultati delle diverse discipline.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <strong>GIORNALE DIGITALE</strong>
+      <p>Progetto editoriale in fase di sviluppo.</p>
+      <p>Contatti, privacy e informazioni editoriali saranno aggiunti
+      prima della pubblicazione definitiva.</p>
+      <small>© Giornale Digitale — nome provvisorio</small>
+    </div>
+  </footer>
+</body>
+</html>
